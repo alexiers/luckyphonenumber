@@ -1,0 +1,21 @@
+{
+  "version": "1.5",
+  "name": "Lucky Phone Number",
+  "description": "Find out how lucky is your phone number",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/images/icon-16.png",
+    "32": "/images/icon-32.png",
+    "48": "/images/icon-48.png",
+    "60": "/images/icon-60.png",
+    "90": "/images/icon-90.png",
+    "120": "/images/icon-120.png",
+    "128": "/images/icon-128.png",
+    "256": "/images/icon-256.png"
+  },
+  "developer": {
+    "name": "Alex Mobii",
+    "url": "http://luckyphonenumber.tk"
+  },
+  "default_locale": "en"
+}
