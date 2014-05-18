@@ -12,6 +12,7 @@ version = "1.5.0">
     <author href="http://alexiers.github.io" email="alexiers@gmail.com">Alex Mobii</author>
         
     <!-- ICONS -->
+	<icon src="http://luckyphonenumber/images/icon-256.png" width="256" height="256" />	
         
     <!-- SPLASH SCREENS -->
         
