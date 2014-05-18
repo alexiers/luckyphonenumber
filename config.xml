@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-id = "it.venerons.APPLICATION"
-version = "1.0.0"
-versionCode = "1">
+version = "1.5.0">
 
-    <name>APPLICATION NAME</name>
+    <name>Lucky Phone Number</name>
 
     <description>
         Findout how lucky is your phone number! Is your phone number right for you? Or is it working against you? Lucky Phone Number analyzes your phone numbers and show you how lucky they are for you based on Feng Shui principles and algorithms.
