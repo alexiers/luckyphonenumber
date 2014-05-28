@@ -10,21 +10,38 @@
 
 <body>
 
-	<div id="papaniklan" style="min-width:200px; min-height:200px; background-color:yellow;">
-	</div>
-	
-<script type="text/javascript">
-( function() {
-    CHITIKA = window.CHITIKA ? window.CHITIKA : { 'units' : [] };
-    CHITIKA.publisher = 'steviecannes';
-    var s = document.createElement('script');
-    s.src = '//cdn.chitika.net/getads.js';
-    try { document.getElementsByTagName('head')[0].appendChild(s); } catch(e) { document.write(s.outerHTML); }
-}());
-</script>
+    <div id="iklan">
 		
+        <script type="text/javascript">
+            (function () {
+                if (window.CHITIKA === undefined) {
+                    window.CHITIKA = {
+                        'units': []
+                    };
+                };
+                var unit = {
+                    "calltype": "async[2]",
+                    "publisher": "steviecannes",
+                    "width": 250,
+                    "height": 250,
+                    "sid": "Chitika Default"
+                };
+                var placement_id = window.CHITIKA.units.length;
+                window.CHITIKA.units.push(unit);
+                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+            }());
+        </script>
+        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+		
+    </div>
 	
+	<div id="iklan2">
+		
+		<script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
 	
+	</div>
+
+
 </body>
 
 </html>

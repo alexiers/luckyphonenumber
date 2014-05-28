@@ -122,8 +122,10 @@
             </div>
 
             <!-- Ads -->
-            <div class="sixteen columns">
-                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
+			<div id="papaniklan" class="sixteen columns"></div>
+			
+            <div id="papaniklan2" class="sixteen columns">
+                
             </div>
             <!-- END Ads -->
 
@@ -132,9 +134,6 @@
 
     </div>
     <!-- END Main Content -->
-
-    <div id="stats" style="display:none;"></div>
-    <div id="iklan" style="position:relative; bottom:0;"></div>
 
 
     <!-- End Document
@@ -283,16 +282,37 @@
             });
         });
 
-        $(window).load(function () {
+        
+		//Launch other stuff
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		//When app is ready
+		function onDeviceReady() {
+			
+			// Now safe to use the PhoneGap API
+			$(window).load(function () {
+				$("#topHeader").css({
+					"background": " #183026 url('img/bg.jpg') no-repeat",
+					"background-size": "cover",
+					"background-position": "center 0",
+					"background-attachment": "fixed"
+				});
+			});
+			
+			$( "#papaniklan" ).load( "ads.html #iklan" );
+			$( "#papaniklan2" ).load( "ads.html #iklan2" );
+			
+			//Google Analytics
+			var gaPlugin;
+			
+			function onDeviceReady() {
+				gaPlugin = window.plugins.gaPlugin;
+				gaPlugin.init(successHandler, errorHandler, "UA-51436788-1", 10);
+			}
+		
+		}
+		//END When app is ready
 
-            $("#topHeader").css({
-                "background": " #183026 url('images/bg.jpg') no-repeat",
-                "background-size": "cover",
-                "background-position": "center 0",
-                "background-attachment": "fixed"
-            });
-
-        });
     </script>
 
     <!-- Start of StatCounter Code for Dreamweaver
