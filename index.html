@@ -309,10 +309,8 @@
 			//Google Analytics
 			var gaPlugin;
 			
-			function onDeviceReady() {
-				gaPlugin = window.plugins.gaPlugin;
-				gaPlugin.init(successHandler, errorHandler, "UA-51436788-1", 10);
-			}
+			gaPlugin = window.plugins.gaPlugin;
+			gaPlugin.init(successHandler, errorHandler, "UA-51436788-1", 10);
 		
 		}
 		//END When app is ready
