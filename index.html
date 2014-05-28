@@ -30,7 +30,22 @@
 
     <!-- Javascript
 ================================================== -->
-    <script src="jquery.min.js"></script>
+    <script>
+	        //Launch other stuff
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+         //When app is ready
+        var gaPlugin;
+
+        function onDeviceReady() {
+            gaPlugin = window.plugins.gaPlugin;
+            gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
+        }
+        //END When app is ready
+	</script>
+	
+	<script src="jquery.min.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -318,21 +333,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
 
 
-         //Launch other stuff
 
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-         //When app is ready
-        var gaPlugin;
-
-        function onDeviceReady() {
-            gaPlugin = window.plugins.gaPlugin;
-            gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
-
-            alert('hello');
-
-        }
-         //END When app is ready
     </script>
 
     <!-- Start of StatCounter Code for Dreamweaver
