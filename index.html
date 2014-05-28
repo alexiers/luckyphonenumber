@@ -286,46 +286,47 @@
             });
         });
 
-        
-		//Launch other stuff
-		document.addEventListener("deviceready", onDeviceReady, false);
-		
-		//When app is ready
-		function onDeviceReady() {
-			
-			// Now safe to use the PhoneGap API
-			$(window).load(function () {
-				$("#topHeader").css({
-					"background": " #183026 url('img/bg.jpg') no-repeat",
-					"background-size": "cover",
-					"background-position": "center 0",
-					"background-attachment": "fixed"
-				});
+        //START onLoad
+		$(window).load(function () {
+			$("#topHeader").css({
+				"background": " #183026 url('img/bg.jpg') no-repeat",
+				"background-size": "cover",
+				"background-position": "center 0",
+				"background-attachment": "fixed"
 			});
 			
 			$( "#papaniklan" ).load( "ads.html #iklan" );
 			$( "#papaniklan2" ).load( "ads.html #iklan2" );
 			
-			//Google Analytics
-			var gaPlugin;
+			//External links
+			$('a').each(function() {
+				var a = new RegExp('/' + window.location.host + '/');
+				if(!a.test(this.href)) {
+					$(this).click(function(event) {
+						event.preventDefault();
+						event.stopPropagation();
+						window.open(this.href, '_system');
+					});
+				}
+			});
 			
-			gaPlugin = window.plugins.gaPlugin;
-			gaPlugin.init(successHandler, errorHandler, "UA-51436788-1", 10);
+			
+		}); 
+		//END onLoad
 		
+		//Launch other stuff
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		//When app is ready
+		var gaPlugin;
+		
+		function onDeviceReady() {
+			gaPlugin = window.plugins.gaPlugin;
+			gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
 		}
 		//END When app is ready
 		
-		//External links
-		$('a').each(function() {
-			var a = new RegExp('/' + window.location.host + '/');
-			if(!a.test(this.href)) {
-				$(this).click(function(event) {
-					event.preventDefault();
-					event.stopPropagation();
-					window.open(this.href, '_system');
-				});
-			}
-		});
+		
 		
 
     </script>
