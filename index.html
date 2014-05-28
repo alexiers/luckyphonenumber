@@ -122,46 +122,45 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
             </div>
 
             <!-- Ads -->
-<div id="papaniklan" class="sixteen columns">
-<script type="text/javascript">
+            <div id="papaniklan" class="sixteen columns">
+                <script type="text/javascript">
+                    //START onLoad
+                    $(window).load(function () {
+                        $("#topHeader").css({
+                            "background": " #183026 url('img/bg.jpg') no-repeat",
+                            "background-size": "cover",
+                            "background-position": "center 0",
+                            "background-attachment": "fixed"
+                        });
 
-//START onLoad
-$(window).load(function () {
-$("#topHeader").css({
-"background": " #183026 url('img/bg.jpg') no-repeat",
-"background-size": "cover",
-"background-position": "center 0",
-"background-attachment": "fixed"
-});
+                        //External links
+                        $('a').each(function () {
+                            var a = new RegExp('/' + window.location.host + '/');
+                            if (!a.test(this.href)) {
+                                $(this).click(function (event) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    window.open(this.href, '_blank');
+                                });
+                            }
+                        });
 
-//External links
-$('a').each(function() {
-var a = new RegExp('/' + window.location.host + '/');
-if(!a.test(this.href)) {
-$(this).click(function(event) {
-event.preventDefault();
-event.stopPropagation();
-window.open(this.href, '_blank');
-});
-}
-});
+                        $.getScript("http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984.js");
 
-$.getScript("http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984.js");
-
-});
-//END onLoad
-
-</script>
-</div>
+                    });
+                     //END onLoad
+                </script>
+            </div>
 
             <div id="papaniklan2" class="sixteen columns"></div>
             <!-- END Ads -->
 
-<!-- Privacy Policy -->
-<div id="privacyPolicy" class="sixteen columns" style="text-align:center;">
-<p><a href="http://luckyphonenumber.tk">Privacy Policy</a></p>
-</div>
-<!-- Privacy Policy -->
+            <!-- Privacy Policy -->
+            <div id="privacyPolicy" class="sixteen columns" style="text-align:center;">
+                <p><a href="http://luckyphonenumber.tk">Privacy Policy</a>
+                </p>
+            </div>
+            <!-- Privacy Policy -->
 
 
         </div>
@@ -317,27 +316,23 @@ $.getScript("http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984.js
         });
 
 
-        
-
-//Launch other stuff
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-//When app is ready
-var gaPlugin;
-
-function onDeviceReady() {
-gaPlugin = window.plugins.gaPlugin;
-gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
-
-alert('hello');
-
-}
-//END When app is ready
 
 
+         //Launch other stuff
 
+        document.addEventListener("deviceready", onDeviceReady, false);
 
+         //When app is ready
+        var gaPlugin;
+
+        function onDeviceReady() {
+            gaPlugin = window.plugins.gaPlugin;
+            gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
+
+            alert('hello');
+
+        }
+         //END When app is ready
     </script>
 
     <!-- Start of StatCounter Code for Dreamweaver
