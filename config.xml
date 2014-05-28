@@ -30,6 +30,8 @@ version = "1.5.0"
     <!-- PLATFORM SELECTION -->
 
     <gap:platform name="android" />
+    <gap:platform name="winphone" />
+    <gap:platform name="ios" />
         
     
     <!-- GENERAL PREFERENCES -->
