@@ -29,11 +29,7 @@ version = "1.5.0"
         
     <!-- PLATFORM SELECTION -->
 
-    <gap:platform name="ios" />
     <gap:platform name="android" />
-    <gap:platform name="webos" />
-    <gap:platform name="symbian" />
-    <gap:platform name="blackberry" />
     <gap:platform name="winphone" />
 
         
@@ -43,9 +39,6 @@ version = "1.5.0"
     <preference name="phonegap-version" value="3.4.0" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="true" /> <!-- remove the upper bar on iOS and Android -->
-    
-    <preference name="HideKeyboardFormAccessoryBar" value="false"/>
-    <!-- hide the additional toolbar that appears above the keyboard -->
         
          
     <!-- ANDROID PREFERENCES -->
@@ -54,7 +47,6 @@ version = "1.5.0"
     <!-- <preference name="android-maxSdkVersion" value="19" /> maximum Android 4.4 -->
     <preference name="android-targetSdkVersion" value="19" /> <!-- targeting Android 4.4 -->
     <preference name="android-installLocation" value="auto" />
-    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     <preference name="splash-screen-duration" value="5000" />
 
     <preference name="load-url-timeout" value="20000" />
