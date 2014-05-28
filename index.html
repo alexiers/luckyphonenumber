@@ -356,25 +356,15 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
          //START onLoad
         $(window).load(function () {
+			initialize();
+			
             $("#topHeader").css({
                 "background": " #183026 url('img/bg.jpg') no-repeat",
                 "background-size": "cover",
                 "background-position": "center 0",
                 "background-attachment": "fixed"
             });
-
-            //External links
-            $('a').each(function () {
-                var a = new RegExp('/' + window.location.host + '/');
-                if (!a.test(this.href)) {
-                    $(this).click(function (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        window.open(this.href, '_blank');
-                    });
-                }
-            });
-
+			
         });
          //END onLoad
     </script>
@@ -392,6 +382,17 @@ gaPlugin = window.plugins.gaPlugin;
 
 // Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
 navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+	//External links
+            $('a').each(function () {
+                var a = new RegExp('/' + window.location.host + '/');
+                if (!a.test(this.href)) {
+                    $(this).click(function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        window.open(this.href, '_system');
+                    });
+                }
+            });
 }
 
 function permissionCallback (button) {
