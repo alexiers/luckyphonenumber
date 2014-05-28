@@ -13,7 +13,7 @@ version = "1.5.0"
     <author href="http://alexiers.github.io" email="alexiers@gmail.com">Alex Mobii</author>
         
     <!-- ICONS -->
-	<icon src="icon-512.png" width="512" height="512" />	
+	<icon src="img/icon-512.png" width="512" height="512" />	
         
     <!-- SPLASH SCREENS -->
     
