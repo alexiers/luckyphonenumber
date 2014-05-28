@@ -22,7 +22,7 @@ version = "1.5.0"
         <gap:splash src="img/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 200x320 -->
         <gap:splash src="img/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 320x480 -->
         <gap:splash src="img/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 480x800 -->
-        <gap:splash src="img/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 720x1280 -->
+        <gap:splash src="img/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 720x1280 -->
         
         <gap:splash src="img/hdpi.jpg" gap:platform="winphone" /> <!-- Windows Phone 7 480x800 -->    
         
