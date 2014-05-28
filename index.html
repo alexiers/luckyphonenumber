@@ -124,10 +124,14 @@
             <!-- Ads -->
 			<div id="papaniklan" class="sixteen columns"></div>
 			
-            <div id="papaniklan2" class="sixteen columns">
-                
-            </div>
+            <div id="papaniklan2" class="sixteen columns"></div>
             <!-- END Ads -->
+			
+			<!-- Privacy Policy -->
+			<div id="privacyPolicy" class="sixteen columns" style="text-align:center;">
+				<p><a href="http://luckyphonenumber.tk">Privacy Policy</a></p>
+			</div>
+			<!-- Privacy Policy -->
 
 
         </div>
@@ -312,6 +316,19 @@
 		
 		}
 		//END When app is ready
+		
+		//External links
+		$('a').each(function() {
+			var a = new RegExp('/' + window.location.host + '/');
+			if(!a.test(this.href)) {
+				$(this).click(function(event) {
+					event.preventDefault();
+					event.stopPropagation();
+					window.open(this.href, '_system');
+				});
+			}
+		});
+		
 
     </script>
 
