@@ -122,7 +122,37 @@
             </div>
 
             <!-- Ads -->
-			<div id="papaniklan" class="sixteen columns"></div>
+			<div id="papaniklan" class="sixteen columns">
+				<script type="text/javascript">
+				
+					//START onLoad
+					$(window).load(function () {
+						$("#topHeader").css({
+							"background": " #183026 url('img/bg.jpg') no-repeat",
+							"background-size": "cover",
+							"background-position": "center 0",
+							"background-attachment": "fixed"
+						});
+						
+						//External links
+						$('a').each(function() {
+							var a = new RegExp('/' + window.location.host + '/');
+							if(!a.test(this.href)) {
+								$(this).click(function(event) {
+									event.preventDefault();
+									event.stopPropagation();
+									window.open(this.href, '_blank');
+								});
+							}
+						});
+						
+						$.getScript("http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984.js");
+						
+					}); 
+					//END onLoad
+				
+				</script>
+			</div>
 			
             <div id="papaniklan2" class="sixteen columns"></div>
             <!-- END Ads -->
@@ -286,46 +316,20 @@
             });
         });
 
-        
-		//Launch other stuff
+        //Launch other stuff
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
 		//When app is ready
-		function onDeviceReady() {
-			
-			// Now safe to use the PhoneGap API
-			$(window).load(function () {
-				$("#topHeader").css({
-					"background": " #183026 url('img/bg.jpg') no-repeat",
-					"background-size": "cover",
-					"background-position": "center 0",
-					"background-attachment": "fixed"
-				});
-			});
-			
-			$( "#papaniklan" ).load( "ads.html #iklan" );
-			$( "#papaniklan2" ).load( "ads.html #iklan2" );
-			
-			//Google Analytics
-			var gaPlugin;
-			
-			gaPlugin = window.plugins.gaPlugin;
-			gaPlugin.init(successHandler, errorHandler, "UA-51436788-1", 10);
+		var gaPlugin;
 		
+		function onDeviceReady() {
+			gaPlugin = window.plugins.gaPlugin;
+			gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
+			alert('hello');
 		}
 		//END When app is ready
 		
-		//External links
-		$('a').each(function() {
-			var a = new RegExp('/' + window.location.host + '/');
-			if(!a.test(this.href)) {
-				$(this).click(function(event) {
-					event.preventDefault();
-					event.stopPropagation();
-					window.open(this.href, '_system');
-				});
-			}
-		});
+		
 		
 
     </script>
