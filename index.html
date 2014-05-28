@@ -30,22 +30,7 @@
 
     <!-- Javascript
 ================================================== -->
-    <script>
-        //Launch other stuff
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-         //When app is ready
-        var gaPlugin;
-
-        function onDeviceReady() {
-            gaPlugin = window.plugins.gaPlugin;
-            gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
-        }
-         //END When app is ready
-    </script>
-
-    <script src="jquery.min.js"></script>
+	<script src="jquery.min.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -79,7 +64,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     <input style="color:#ffffff; font-weight:700; font-size:1.2em; font-family:'Courier New'; background:transparent;" class="full-width" style="height:25px" type="number" autocomplete="off" id="inputr" NAME="inpt" maxlength="12" onKeyPress="return numbersonly(this, event)" placeholder="Enter your phone number" />
                 </div>
                 <div class="two columns">
-                    <a href="#" class="idr" TYPE="BUTTON" ONCLICK="suminp()" style="width:100%; text-align:center; background:#35b88f; color:#fff; text-decoration:none; font-weight:700;font-size:1.2em;">Go</a>
+                    <a href="#" class="idr" TYPE="BUTTON" ONCLICK="suminp(); TrackButtonClicked();" style="width:100%; text-align:center; background:#35b88f; color:#fff; text-decoration:none; font-weight:700;font-size:1.2em;">Go</a>
                     <input id="sum" TYPE=TEXT NAME="outpt" disabled style="display:none" />
                 </div>
             </form>
@@ -132,7 +117,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     </div>
                 </div>
                 <!-- END results -->
-                <a id="enterNew" href="#" class="idr" TYPE="BUTTON" ONCLICK="resetStuff()" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
+                <a id="enterNew" href="#" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); TrackButtonClicked();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
 
             </div>
 
@@ -393,6 +378,64 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         });
          //END onLoad
     </script>
+	
+	
+<script type="text/javascript">
+var gaPlugin;
+
+function initialize() {
+     document.addEventListener("deviceready", onDeviceReady, true);
+}
+
+function onDeviceReady() {
+gaPlugin = window.plugins.gaPlugin;
+
+// Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
+navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+}
+
+function permissionCallback (button) {
+if (button === 1)
+gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-51436788-1", 10);
+}
+
+function nativePluginResultHandler (result) {
+//alert('nativePluginResultHandler - '+result);
+console.log('nativePluginResultHandler: '+result);
+
+}
+        
+function nativePluginErrorHandler (error) {
+//alert('nativePluginErrorHandler - '+error);
+console.log('nativePluginErrorHandler: '+error);
+}
+
+function TrackButtonClicked() {
+gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
+}
+        
+function VariableButtonClicked() {
+// Set a dimension based on index and value. Make sure you have added a dimension in the GA dashboard to the
+// default property for the passed in index, and your desired scope. GA allows up to 20 dimensions for a free account
+gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
+
+// dimensions are are passed to the next event sent to GA. go ahead and fire off an event with the label (key) of your choice
+// In this example, the label for custom dimension 1 will show up in the dashboard as "favoriteColor". This is much more efficent
+// than the old custom variable method introduced in V1, (plus you get 20 free dimensions vs 5 free custom variables)
+gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "event with variable", "set variable", "favoriteColor", 1);
+}
+        
+function PageButtonClicked() {
+gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
+}
+
+function goingAway() {
+gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
+}
+
+</script>
+
+
 
     <!-- Start of StatCounter Code for Dreamweaver
 <script type="text/javascript">
