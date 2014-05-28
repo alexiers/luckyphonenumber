@@ -13,18 +13,18 @@ version = "1.5.0"
     <author href="http://alexiers.github.io" email="alexiers@gmail.com">Alex Mobii</author>
         
     <!-- ICONS -->
-	<icon src="icon-256.png" width="512" height="512" />	
+	<icon src="icon-512.png" width="512" height="512" />	
         
     <!-- SPLASH SCREENS -->
     
         <gap:splash src="mdpi.png" /> <!-- default 320x480 pixels -->
         
-        <gap:splash src="img/splash/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 200x320 -->
-        <gap:splash src="img/splash/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 320x480 -->
-        <gap:splash src="img/splash/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 480x800 -->
+        <gap:splash src="img/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 200x320 -->
+        <gap:splash src="img/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 320x480 -->
+        <gap:splash src="img/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 480x800 -->
         <gap:splash src="img/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 720x1280 -->
         
-        <gap:splash src="img/splash/winphone/splash.jpg" gap:platform="winphone" /> <!-- Windows Phone 7 480x800 -->    
+        <gap:splash src="img/hdpi.jpg" gap:platform="winphone" /> <!-- Windows Phone 7 480x800 -->    
         
         
     <!-- PLATFORM SELECTION -->
