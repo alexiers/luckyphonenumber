@@ -30,7 +30,7 @@
 
     <!-- Javascript
 ================================================== -->
-	<script src="jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -121,79 +121,50 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
             </div>
 
-            <!-- Ads -->
-            <div id="papaniklan" class="sixteen columns">
-                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
-            </div>
-
-            <div id="papaniklan2" class="sixteen columns">
-
-                <script type="text/javascript">
-                    (function () {
-                        if (window.CHITIKA === undefined) {
-                            window.CHITIKA = {
-                                'units': []
-                            };
-                        };
-                        var unit = {
-                            "calltype": "async[2]",
-                            "publisher": "steviecannes",
-                            "width": 250,
-                            "height": 250,
-                            "sid": "Chitika Default"
-                        };
-                        var placement_id = window.CHITIKA.units.length;
-                        window.CHITIKA.units.push(unit);
-                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                    }());
-                </script>
-
-            </div>
-            <!-- END Ads -->
-
         </div>
     </div>
     <!-- END Main Content -->
-	
-	<!-- Ads -->
-	<div class="container" style="padding: 1em 0 0 0;">
-			
-            <div id="papaniklan" class="sixteen columns">
-                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
-            </div>
 
-            <div id="papaniklan2" class="sixteen columns">
+    <!-- Ads -->
+    <div class="container" style="padding: 1em 0 0 0;">
 
-                <script type="text/javascript">
-                    (function () {
-                        if (window.CHITIKA === undefined) {
-                            window.CHITIKA = {
-                                'units': []
-                            };
-                        };
-                        var unit = {
-                            "calltype": "async[2]",
-                            "publisher": "steviecannes",
-                            "width": 250,
-                            "height": 250,
-                            "sid": "Chitika Default"
-                        };
-                        var placement_id = window.CHITIKA.units.length;
-                        window.CHITIKA.units.push(unit);
-                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                    }());
-                </script>
-
-            </div>
-            
-            <!-- Privacy Policy -->
-            <div id="privacyPolicy" class="sixteen columns" style="text-align:center;">
-                <p><a href="http://luckyphonenumber.tk" target="_system">Privacy Policy</a>
-                </p>
-            </div>
-            <!-- Privacy Policy -->
+        <div id="papaniklan" class="sixteen columns">
+            <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
         </div>
-	    <!-- END Ads -->
+
+        <div id="papaniklan2" class="sixteen columns">
+
+            <script type="text/javascript">
+                (function () {
+                    if (window.CHITIKA === undefined) {
+                        window.CHITIKA = {
+                            'units': []
+                        };
+                    };
+                    var unit = {
+                        "calltype": "async[2]",
+                        "publisher": "steviecannes",
+                        "width": 250,
+                        "height": 250,
+                        "sid": "Chitika Default"
+                    };
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                }());
+            </script>
+            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+
+        </div>
+
+        <!-- Privacy Policy -->
+        <div id="privacyPolicy" class="sixteen columns" style="text-align:center;">
+            <p><a href="http://luckyphonenumber.tk/privacy_policy.html" target="_system">Privacy Policy</a>
+            </p>
+        </div>
+        <!-- Privacy Policy -->
+    </div>
+    <!-- END Ads -->
 
 
     <!-- End Document
@@ -345,33 +316,33 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
          //START onLoad
         $(window).load(function () {
-			initialize();
-			
+            initialize();
+
             $("#topHeader").css({
                 "background": " #183026 url('img/bg.jpg') no-repeat",
                 "background-size": "cover",
                 "background-position": "center 0",
                 "background-attachment": "fixed"
             });
-			
+
         });
          //END onLoad
     </script>
-	
-	
-<script type="text/javascript">
-var gaPlugin;
 
-function initialize() {
-     document.addEventListener("deviceready", onDeviceReady, true);
-}
 
-function onDeviceReady() {
-gaPlugin = window.plugins.gaPlugin;
+    <script type="text/javascript">
+        var gaPlugin;
 
-// Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
-navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
-	//External links
+        function initialize() {
+            document.addEventListener("deviceready", onDeviceReady, true);
+        }
+
+        function onDeviceReady() {
+            gaPlugin = window.plugins.gaPlugin;
+
+            // Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
+            navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+            //External links
             $('a').each(function () {
                 var a = new RegExp('/' + window.location.host + '/');
                 if (!a.test(this.href)) {
@@ -382,48 +353,47 @@ navigator.notification.confirm('GA_PLUGIN would like your permission to collect 
                     });
                 }
             });
-}
+        }
 
-function permissionCallback (button) {
-if (button === 1)
-gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-51436788-1", 10);
-}
+        function permissionCallback(button) {
+            if (button === 1)
+                gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-51436788-1", 10);
+        }
 
-function nativePluginResultHandler (result) {
-//alert('nativePluginResultHandler - '+result);
-console.log('nativePluginResultHandler: '+result);
+        function nativePluginResultHandler(result) {
+            //alert('nativePluginResultHandler - '+result);
+            console.log('nativePluginResultHandler: ' + result);
 
-}
-        
-function nativePluginErrorHandler (error) {
-//alert('nativePluginErrorHandler - '+error);
-console.log('nativePluginErrorHandler: '+error);
-}
+        }
 
-function TrackButtonClicked() {
-gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
-}
-        
-function VariableButtonClicked() {
-// Set a dimension based on index and value. Make sure you have added a dimension in the GA dashboard to the
-// default property for the passed in index, and your desired scope. GA allows up to 20 dimensions for a free account
-gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
+        function nativePluginErrorHandler(error) {
+            //alert('nativePluginErrorHandler - '+error);
+            console.log('nativePluginErrorHandler: ' + error);
+        }
 
-// dimensions are are passed to the next event sent to GA. go ahead and fire off an event with the label (key) of your choice
-// In this example, the label for custom dimension 1 will show up in the dashboard as "favoriteColor". This is much more efficent
-// than the old custom variable method introduced in V1, (plus you get 20 free dimensions vs 5 free custom variables)
-gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "event with variable", "set variable", "favoriteColor", 1);
-}
-        
-function PageButtonClicked() {
-gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
-}
+        function TrackButtonClicked() {
+            gaPlugin.trackEvent(nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
+        }
 
-function goingAway() {
-gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
-}
+        function VariableButtonClicked() {
+            // Set a dimension based on index and value. Make sure you have added a dimension in the GA dashboard to the
+            // default property for the passed in index, and your desired scope. GA allows up to 20 dimensions for a free account
+            gaPlugin.setVariable(nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
 
-</script>
+            // dimensions are are passed to the next event sent to GA. go ahead and fire off an event with the label (key) of your choice
+            // In this example, the label for custom dimension 1 will show up in the dashboard as "favoriteColor". This is much more efficent
+            // than the old custom variable method introduced in V1, (plus you get 20 free dimensions vs 5 free custom variables)
+            gaPlugin.trackEvent(nativePluginResultHandler, nativePluginErrorHandler, "event with variable", "set variable", "favoriteColor", 1);
+        }
+
+        function PageButtonClicked() {
+            gaPlugin.trackPage(nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
+        }
+
+        function goingAway() {
+            gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
+        }
+    </script>
 
 
 
