@@ -314,9 +314,21 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         });
 
 
+        $('a').each(function () {
+            var a = new RegExp('/' + window.location.host + '/');
+            if (!a.test(this.href)) {
+                $(this).click(function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    window.open(this.href, '_blank');
+                });
+            }
+        });
+
+
          //START onLoad
         $(window).load(function () {
-            
+
             $("#topHeader").css({
                 "background": " #183026 url('img/bg.jpg') no-repeat",
                 "background-size": "cover",
@@ -329,23 +341,25 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
     </script>
 
 
-<!-- Start of StatCounter Code for Dreamweaver -->
-<script type="text/javascript">
-var sc_project=9832759; 
-var sc_invisible=1; 
-var sc_security="be709236"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="web analytics"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="http://c.statcounter.com/9832759/0/be709236/1/"
-alt="web analytics"></a></div></noscript>
-<!-- End of StatCounter Code for Dreamweaver -->
+    <!-- Start of StatCounter Code for Dreamweaver -->
+    <script type="text/javascript">
+        var sc_project = 9832759;
+        var sc_invisible = 1;
+        var sc_security = "be709236";
+        var scJsHost = (("https:" == document.location.protocol) ?
+            "https://secure." : "http://www.");
+        document.write("<sc" + "ript type='text/javascript' src='" +
+            scJsHost +
+            "statcounter.com/counter/counter.js'></" + "script>");
+    </script>
+    <noscript>
+        <div class="statcounter">
+            <a title="web analytics" href="http://statcounter.com/" target="_blank">
+                <img class="statcounter" src="http://c.statcounter.com/9832759/0/be709236/1/" alt="web analytics">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of StatCounter Code for Dreamweaver -->
 
 
 </body>
