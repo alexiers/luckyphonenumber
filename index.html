@@ -31,6 +31,7 @@
     <!-- Javascript
 ================================================== -->
     <script src="jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -314,16 +315,40 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         });
 
 
-        $('a').each(function () {
-            var a = new RegExp('/' + window.location.host + '/');
-            if (!a.test(this.href)) {
-                $(this).click(function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    window.open(this.href, '_system');
-                });
-            }
-        });
+
+
+         // Wait for Cordova to load
+         //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+         // Cordova is ready
+         //
+        function onDeviceReady() {
+            alert('Device is ready!');
+            //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+            //iabRef.addEventListener('loadstart', iabLoadStart);
+            //iabRef.addEventListener('loadstop', iabLoadStop);
+            //iabRef.addEventListener('exit', iabClose);
+
+            $('a').each(function () {
+                var a = new RegExp('/' + window.location.host + '/');
+                if (!a.test(this.href)) {
+                    $(this).click(function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        window.open(this.href, '_system', 'location=yes');
+                    });
+                }
+            });
+            
+            //$("#content a[href^='http://']").attr("target","_system","location=yes");
+       
+       
+        }
+        
+        
+
+
 
 
          //START onLoad
@@ -338,6 +363,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
         });
          //END onLoad
+         
     </script>
 
 
