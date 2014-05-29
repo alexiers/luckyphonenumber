@@ -32,6 +32,7 @@
 ================================================== -->
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script src="jquery.easyModal.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -330,7 +331,6 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
          // Cordova is ready
          //
         function onDeviceReady() {
-            alert('Device is ready!');
             //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
             //iabRef.addEventListener('loadstart', iabLoadStart);
             //iabRef.addEventListener('loadstop', iabLoadStop);
@@ -361,6 +361,49 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
          //END onLoad
     </script>
     <!-- END Other stuff -->
+
+
+<!-- Modal -->
+<div id="modal2">
+	    
+	<div id="my-ad-slot">
+    <script type="text/javascript">
+    var inmobi_conf = {
+    siteid : "805576b9418540cc8360c3ebd37bb9e8", // your Property ID
+    slot: 10,
+    test: true,
+    manual: true,
+    autoRefresh: 60,
+    targetWindow : "_blank",
+    };
+    </script>
+    <script type="text/javascript" src="http://cf.cdn.inmobi.com/ad/inmobi.js"></script>
+    </div>
+	
+	
+	<div style="text-align:center;">
+			<a href="#" class="close" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; padding:0.38em;">close</a>
+	</div>
+</div>
+	
+	<script type="text/javascript">
+		$('#modal2').easyModal({
+			overlay : 0.4,
+			overlayOpacity : 0.8,
+			overlayClose: false
+		});
+		
+		$(window).load(function() {
+		  
+			setInterval(function() {
+				_inmobi.getNewAd(document.getElementById('my-ad-slot'));
+				$('#modal2').trigger('openModal');				
+			}, 58000);
+			
+		});
+		
+	</script>
+<!-- Modal -->
 
 
     <!-- Start of StatCounter Code for Dreamweaver -->
