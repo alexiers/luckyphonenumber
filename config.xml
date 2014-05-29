@@ -67,7 +67,6 @@
 -->
 
     <access origin="*" />
-	<gap:plugin name="com.adobe.plugins.gaplugin" />
-		<gap:plugin name="org.apache.cordova.inappbrowser"/>
+    <gap:plugin name="org.apache.cordova.inappbrowser"/>
 		
 </widget>
