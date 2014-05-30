@@ -224,12 +224,13 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
 <!-- Modal -->
 <div id="modal2">
-	    <div id="my-ad-slot">
-	    <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
-	    </div>
+	    
+	<div id="my-ad-slot">
+                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
+
+    </div>
 	
-	
-	<div style="text-align:center;">
+	<div style="text-align:center; width:100%;">
 			<a href="#" class="close" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; padding:0.38em;">close</a>
 	</div>
 </div>
@@ -244,9 +245,8 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		$(window).load(function() {
 		  
 			setInterval(function() {
-				_inmobi.getNewAd(document.getElementById('my-ad-slot'));
 				$('#modal2').trigger('openModal');				
-			}, 58000);
+			}, 38000);
 			
 		});
 		
