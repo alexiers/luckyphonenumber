@@ -131,8 +131,23 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
     <div class="container" style="padding: 1em 0 0 0;">
     
     
-        <div id="papaniklan" class="sixteen columns">
+        <!--<div id="papaniklan" class="sixteen columns">
             <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
+        </div>-->
+        
+        <div id="papaniklan" class="sixteen columns">
+            <div id="adContainer"></div>
+            <script src="http://cdn.millennialmedia.com/mmadlib/v1/mmadlib.js"></script>
+            <script>
+                window.mmAPI.placeAd({
+                    containerElementId: "adContainer",
+                    apid: "162614",
+                    placementType: "inline",
+                    width: 300,
+                    height: 250,
+                    allowLocation: true  
+                });
+            </script>
         </div>
 
         <hr>
