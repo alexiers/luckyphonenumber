@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id          = "com.alexmobii.luckyphonenumber"
         version = "1.1.5"
-        versionCode = "10105">
+        versionCode = "10106">
 
     <name>Lucky Phone Number</name>
 
