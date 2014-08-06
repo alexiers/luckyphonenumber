@@ -2,8 +2,8 @@
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id          = "com.alexmobii.luckyphonenumber"
-        version = "1.1.5"
-        versionCode = "10106">
+        version = "1.1.7"
+        versionCode = "10107">
 
     <name>Lucky Phone Number</name>
 
@@ -39,7 +39,7 @@
         
     <preference name="phonegap-version" value="3.4.0" />
     <preference name="orientation" value="portrait" />
-    <preference name="fullscreen" value="true" /> <!-- remove the upper bar on iOS and Android -->
+    <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
         
          
     <!-- ANDROID PREFERENCES -->
@@ -48,7 +48,7 @@
     <!-- <preference name="android-maxSdkVersion" value="19" /> maximum Android 4.4 -->
     <preference name="android-targetSdkVersion" value="19" /> <!-- targeting Android 4.4 -->
     <preference name="android-installLocation" value="auto" />
-    <preference name="splash-screen-duration" value="5000" />
+    <preference name="splash-screen-duration" value="2500" />
 
     <preference name="load-url-timeout" value="20000" />
         
