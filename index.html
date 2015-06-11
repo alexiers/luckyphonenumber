@@ -33,7 +33,6 @@
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="jquery.easyModal.js"></script>
-    <script src="admob_simple.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -142,7 +141,8 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
         <hr>
         
-        <button onclick="AdMob.showInterstitial();">Show</button>
+		<button onclick="prepareInterstitial();">Prepare</button>
+		<button onclick="AdMob.showInterstitial();">Show</button>
 
         <!-- Privacy Policy -->
         <div id="privacyPolicy" class="sixteen columns" style="text-align:center; display:none;">
@@ -258,7 +258,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         
         function prepareInterstitial() {
             var autoshow = document.getElementById('autoshow').checked;
-            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:autoshow});
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:false});
         }
         
         function initAd(){
