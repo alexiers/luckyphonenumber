@@ -42,7 +42,7 @@
 <body style="background: #35b88f top center no-repeat;
 background-size: cover;
 background-position: center 0;
-background-attachment: fixed;">
+background-attachment: fixed;" onresize="onResize()">
 
 
 
@@ -141,9 +141,11 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
         <hr>
         
+		<input type='checkbox' id='autoshow' checked />auto show when ready<br />
 		<button onclick="prepareInterstitial();">Prepare</button>
 		<button onclick="AdMob.showInterstitial();">Show</button>
-
+		<div id='sizeinfo'></div>
+        
         <!-- Privacy Policy -->
         <div id="privacyPolicy" class="sixteen columns" style="text-align:center; display:none;">
             <p><a href="http://luckyphonenumber.tk/privacy_policy.html">Privacy Policy</a>
@@ -210,7 +212,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         if( /(android)/i.test(navigator.userAgent) ) { 
             admobid = { // for Android
                 banner: 'ca-app-pub-3545086673654393/5969342403',
-                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+                interstitial: 'ca-app-pub-6869992474017983/1657046752'
             };
         }  else {
             admobid = { // for Windows Phone
@@ -258,7 +260,12 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         
         function prepareInterstitial() {
             var autoshow = document.getElementById('autoshow').checked;
-            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:false});
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:autoshow});
+        }
+        
+        function onResize(){
+            var s = document.getElementById('sizeinfo');
+            s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
         }
         
         function initAd(){
@@ -275,6 +282,22 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                 // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
             };
             AdMob.setOptions( defaultOptions );
+            registerAdEvents();
+        }
+        
+        function registerAdEvents() {
+            // new events, with variable to differentiate: adNetwork, adType, adEvent
+            document.addEventListener('onAdFailLoad', function(data){
+                alert('error: ' + data.error + 
+                      ', reason: ' + data.reason + 
+                      ', adNetwork:' + data.adNetwork + 
+                      ', adType:' + data.adType + 
+                      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
+            document.addEventListener('onAdLoaded', function(data){});
+            document.addEventListener('onAdPresent', function(data){});
+            document.addEventListener('onAdLeaveApp', function(data){});
+            document.addEventListener('onAdDismiss', function(data){});
         }
         
     </script>
