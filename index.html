@@ -248,7 +248,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     autoShow : true
                 });
                 
-                AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+                AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:true} );
             }
                                     
         }
@@ -265,10 +265,10 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		}
 		
 		$(window).load(function() {
-		  
-			setInterval(function() {
+            
+            setInterval(function() {
                 AdMob.showInterstitial();
-			}, 38000);
+            }, 38000);
 			
 		});
 		
