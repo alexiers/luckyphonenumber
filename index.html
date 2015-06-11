@@ -33,6 +33,7 @@
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="jquery.easyModal.js"></script>
+    <script src="admob_simple.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -119,7 +120,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     </div>
                 </div>
                 <!-- END results -->
-                <a id="enterNew" href="http://luckyphonenumber.tk" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); iklan();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
+                <a id="enterNew" href="http://luckyphonenumber.tk" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); prepareInterstitial();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
 
             </div>
 
@@ -136,7 +137,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         </div>-->
         
         <div id="papaniklan" class="sixteen columns">
-            <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script>
+            
         </div>
 
         <hr>
@@ -202,6 +203,27 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
     <!-- Other stuff -->
     <script>
+        //START Admob
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) { 
+            admobid = { // for Android
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }  else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }
+        
+        function prepareInterstitial() {
+            var autoshow = document.getElementById('autoshow').checked;
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:false});
+        }
+        //END Admob
+        
+        
         // Wait for Cordova to load
          //
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -222,34 +244,25 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
                 window.open($this.attr('href'), target, 'location=no');
             });
+            
+            
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId : admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow : true
+                });
+            }
+            
+            prepareInterstitial();
+                        
         }
-
-
-         //START onLoad
-         //END onLoad
     </script>
     <!-- END Other stuff -->
 
 
 <!-- Modal -->
-<div id="modal2">
-	<div class="" id="my-ad-slot">
-		<h6 style="text-transform:none; font-weight:400; colot:#efefef;">Sponsored advert:</h6>
-		<script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
-    </div>
-	<br>
-	<div style="text-align:center;">
-		<a href="#" class="close" style="color:#efefef; text-decoration:none; font-weight:700; border:#efefef solid 1px; padding:0.5em;">Close advert</a>
-	</div>
-</div>
-	
 	<script type="text/javascript">
-		$('#modal2').easyModal({
-			overlay : 0.4,
-			overlayOpacity : 0.8,
-			overlayClose: false
-		});
-		
 		function iklan() {
 			setTimeout(function() {
 				$('#modal2').trigger('openModal');
@@ -259,7 +272,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		$(window).load(function() {
 		  
 			setInterval(function() {
-				$('#modal2').trigger('openModal');				
+                AdMob.showInterstitial();
 			}, 38000);
 			
 		});
