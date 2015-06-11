@@ -288,11 +288,11 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         function registerAdEvents() {
             // new events, with variable to differentiate: adNetwork, adType, adEvent
             document.addEventListener('onAdFailLoad', function(data){
-                alert('error: ' + data.error + 
-                      ', reason: ' + data.reason + 
-                      ', adNetwork:' + data.adNetwork + 
-                      ', adType:' + data.adType + 
-                      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+                //alert('error: ' + data.error + 
+                //      ', reason: ' + data.reason + 
+                //      ', adNetwork:' + data.adNetwork + 
+                //      ', adType:' + data.adType + 
+                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
             });
             document.addEventListener('onAdLoaded', function(data){});
             document.addEventListener('onAdPresent', function(data){});
