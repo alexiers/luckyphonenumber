@@ -216,11 +216,6 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                 interstitial: 'ca-app-pub-3545086673654393/7166874008'
             };
         }
-        
-        function prepareInterstitial() {
-            var autoshow = document.getElementById('autoshow').checked;
-            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:false});
-        }
         //END Admob
         
         
@@ -252,10 +247,10 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     position : AdMob.AD_POSITION.BOTTOM_CENTER,
                     autoShow : true
                 });
+                
+                AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
             }
-            
-            prepareInterstitial();
-                        
+                                    
         }
     </script>
     <!-- END Other stuff -->
