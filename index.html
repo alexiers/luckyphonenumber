@@ -120,7 +120,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     </div>
                 </div>
                 <!-- END results -->
-                <a id="enterNew" href="#" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); AdMob.showInterstitial();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
+                <a id="enterNew" href="#" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); iklanready();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
 
             </div>
 
@@ -248,10 +248,20 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     autoShow : true
                 });
                 
-                AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:true} );
+                AdMob.prepareInterstitial({
+                    adId:admobid.interstitial,
+                    autoShow:false
+                });
             }
                                     
         }
+        
+        function iklanready() {
+            AdMob.isInterstitialReady(function(isready){
+                if(isready) AdMob.showInterstitial();
+            });
+        }
+        
     </script>
     <!-- END Other stuff -->
 
@@ -267,7 +277,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		$(window).load(function() {
             
             setInterval(function() {
-                AdMob.showInterstitial();
+                iklanready();
             }, 38000);
 			
 		});
