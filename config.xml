@@ -73,6 +73,6 @@
     <!-- <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" /> -->
     
     <!-- TappX -->
-    <gap:plugin name="com.ads.tappx" source="plugins.cordova.io" version="2.0.14"/>
+    <gap:plugin name="com.ads.tappx" source="plugins.cordova.io" />
 		
 </widget>
