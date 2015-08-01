@@ -37,7 +37,7 @@
     
     <!-- GENERAL PREFERENCES -->
         
-    <preference name="phonegap-version" value="3.7.0" />
+    <preference name="phonegap-version" value="5.1.1" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
         
@@ -73,6 +73,6 @@
     <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" />
     
     <!-- TappX -->
-    <gap:plugin name="com.ads.tappx" source="plugins.cordova.io" version="2.0.14"/>
+    <gap:plugin name="com.ads.tappx" source="plugins.cordova.io"/>
 		
 </widget>
