@@ -207,14 +207,34 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
     <!-- Other stuff -->
     <script>
+        //START Admob
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) { 
+            admobid = { // for Android
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }  else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }
+        //END Admob
         
-        // Cordova is ready
+        
+        // Wait for Cordova to load
+         //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+         // Cordova is ready
          //
         function onDeviceReady() {
-            
-            document.removeEventListener('deviceready', onDeviceReady, false);
-            
-            //Use in-app browser for external links
+            //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+            //iabRef.addEventListener('loadstart', iabLoadStart);
+            //iabRef.addEventListener('loadstop', iabLoadStop);
+            //iabRef.addEventListener('exit', iabClose);
+
             $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
 
                 e.preventDefault();
@@ -224,32 +244,64 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                 window.open($this.attr('href'), target, 'location=no');
             });
             
-                            
-            // Set AdMobAds options:
-            admob.setOptions({
-                publisherId:          "ca-app-pub-3545086673654393/5969342403",  // Replace with your AdMob id (if you don't have any, set it to "NONE")
-                tappxIdAndroid:       " /120940746/Pub-5197-Android-9379",       // Replace with your Tappx Id for Android
-                tappxShare:           1                                          // Do not use lower tappxShare ratio if you have set publixherId to "NONE"
-            });
             
-            // Start showing banners (will show atomatically as autoShowBanner is set to true by default)
-            admob.createBannerView();
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId : admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow : true
+                });
+                
+                initAd();
+                prepareInterstitial();                
+            }
             
-            // Request interstitial (will present automatically as autoShowInterstitial is set to true by default)
-            admob.requestInterstitial();                                    
+                                
         
         } //END-ondeviceready
         
         
-        // Wait for Cordova to load
-        document.addEventListener("deviceready", onDeviceReady, false);
+        function prepareInterstitial() {
+            var autoshow = document.getElementById('autoshow').checked;
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:true});
+        }
         
         function onResize(){
             var s = document.getElementById('sizeinfo');
             s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
         }
         
+        function initAd(){
+            var defaultOptions = {
+                // adSize: 'SMART_BANNER',
+                // width: integer, // valid when set adSize 'CUSTOM'
+                // height: integer, // valid when set adSize 'CUSTOM'
+                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+                bgColor: 'black', // color name, or '#RRGGBB'
+                // x: integer,		// valid when set position to 0 / POS_XY
+                // y: integer,		// valid when set position to 0 / POS_XY
+                isTesting: false, // set to true, to receiving test ad for testing purpose
+                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+            };
+            AdMob.setOptions( defaultOptions );
+            registerAdEvents();
+        }
         
+        function registerAdEvents() {
+            // new events, with variable to differentiate: adNetwork, adType, adEvent
+            document.addEventListener('onAdFailLoad', function(data){
+                //alert('error: ' + data.error + 
+                //      ', reason: ' + data.reason + 
+                //      ', adNetwork:' + data.adNetwork + 
+                //      ', adType:' + data.adType + 
+                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
+            document.addEventListener('onAdLoaded', function(data){});
+            document.addEventListener('onAdPresent', function(data){});
+            document.addEventListener('onAdLeaveApp', function(data){});
+            document.addEventListener('onAdDismiss', function(data){});
+        }
         
     </script>
     <!-- END Other stuff -->
@@ -264,10 +316,12 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		}
 		
 		$(window).load(function() {
+            
             setInterval(function() {
-                admob.requestInterstitial();
+                AdMob.showInterstitial();
             }, 38000);
-        });
+			
+		});
 		
 	</script>
 <!-- Modal -->
