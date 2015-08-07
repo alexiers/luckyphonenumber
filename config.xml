@@ -72,5 +72,8 @@
     <!-- AdMob Plugin -->
     <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" />
     
+    <!-- TappX -->
+    <gap:plugin name="com.ads.tappx" source="plugins.cordova.io" />
+    
 		
 </widget>
