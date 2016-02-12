@@ -26,10 +26,10 @@
     <!-- SPLASH SCREENS -->
     
     <platform name="android">
-       	<splash src="img/ldpi.png" platform="android" qualifier="lhdpi" /> <!-- 200x320 -->
-       	<splash src="img/mdpi.png" platform="android" qualifier="lhdpi" /> <!-- 320x480 -->
-       	<splash src="img/hdpi.png" platform="android" qualifier="lhdpi" /> <!-- 480x800 -->
-      	<splash src="img/xhdpi.png" platform="android" qualifier="lhdpi" /> <!-- 720x1280 -->
+       	<splash src="img/ldpi.png" platform="android" qualifier="ldpi" /> <!-- 200x320 -->
+       	<splash src="img/mdpi.png" platform="android" qualifier="mhdpi" /> <!-- 320x480 -->
+       	<splash src="img/hdpi.png" platform="android" qualifier="hdpi" /> <!-- 480x800 -->
+      	<splash src="img/xhdpi.png" platform="android" qualifier="xhdpi" /> <!-- 720x1280 -->
       	<preference name="SplashScreenDelay" value="3000"/>
     </platform>
         
