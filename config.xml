@@ -80,7 +80,7 @@
     
     <!-- AdMob Plugin -->
     <!-- <gap:plugin name="cordova-plugin-admobpro" source="npm"/> -->
-    <plugin name="com.admob.google" spec="4.0.8" source="pgb" />
+    <gap:plugin name="com.admob.google" spec="4.0.8" source="pgb" />
     <!-- <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" /> -->
     
     <!-- TappX -->
