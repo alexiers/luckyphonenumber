@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
         id          = "com.alexmobii.luckyphonenumber"
         version = "1.4.0"
         versionCode = "10400">
@@ -18,14 +19,13 @@
         
     <!-- SPLASH SCREENS -->
     
-        <gap:splash src="mdpi.png" /> <!-- default 320x480 pixels -->
-        
-        <gap:splash src="img/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 200x320 -->
-        <gap:splash src="img/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 320x480 -->
-        <gap:splash src="img/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 480x800 -->
-        <gap:splash src="img/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 720x1280 -->
-        
-        <gap:splash src="img/hdpi.jpg" gap:platform="winphone" /> <!-- Windows Phone 7 480x800 -->    
+    <platform name="android">
+       	<splash src="img/ldpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 200x320 -->
+       	<splash src="img/mdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 320x480 -->
+       	<splash src="img/hdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 480x800 -->
+      	<splash src="img/xhdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 720x1280 -->
+      	<preference name="SplashScreenDelay" value="3000"/>
+    </platform>
         
         
     <!-- PLATFORM SELECTION -->
@@ -43,6 +43,12 @@
          
          
     <!-- ANDROID PREFERENCES -->
+    
+    <supports-screens android:anyDensity="true" android:resizeable="true" 
+    android:smallScreens="true" 
+    android:normalScreens="true" 
+    android:largeScreens="true" 
+    android:xlargeScreens="true" />
         
     <preference name="android-minSdkVersion" value="14" /> <!-- minimum Android 2.1 -->
     <!-- <preference name="android-maxSdkVersion" value="19" /> maximum Android 4.4 -->
@@ -67,10 +73,11 @@
 <feature name="http://api.phonegap.com/1.0/network"/>
 <feature name="http://api.phonegap.com/1.0/notification"/>
 -->
-
+    <plugin name="cordova-plugin-whitelist" />
     <access origin="*" />
     <!-- <gap:plugin name="org.apache.cordova.inappbrowser"/> -->
     <plugin name="cordova-plugin-inappbrowser" spec="1.0.1" source="pgb" />
+    
     
     <!-- AdMob Plugin -->
     <gap:plugin name="cordova-plugin-admobpro" source="npm"/>
