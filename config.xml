@@ -20,10 +20,10 @@
     <!-- SPLASH SCREENS -->
     
     <platform name="android">
-       	<splash src="img/ldpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 200x320 -->
-       	<splash src="img/mdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 320x480 -->
-       	<splash src="img/hdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 480x800 -->
-      	<splash src="img/xhdpi.png" platform="android" gap:qualifier="lhdpi" /> <!-- 720x1280 -->
+       	<splash src="img/ldpi.png" platform="android" qualifier="lhdpi" /> <!-- 200x320 -->
+       	<splash src="img/mdpi.png" platform="android" qualifier="lhdpi" /> <!-- 320x480 -->
+       	<splash src="img/hdpi.png" platform="android" qualifier="lhdpi" /> <!-- 480x800 -->
+      	<splash src="img/xhdpi.png" platform="android" qualifier="lhdpi" /> <!-- 720x1280 -->
       	<preference name="SplashScreenDelay" value="3000"/>
     </platform>
         
