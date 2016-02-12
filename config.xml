@@ -13,6 +13,12 @@
     </description>
 
     <author href="http://alexiers.github.io" email="alexiers@gmail.com">Alex Mobii</author>
+    
+    <!-- PLATFORM SELECTION -->
+
+    <gap:platform name="android" />
+    <!-- <gap:platform name="winphone" /> -->   
+    
         
     <!-- ICONS -->
 	<icon src="img/icon-512.png" width="512" height="512" />	
@@ -26,13 +32,6 @@
       	<splash src="img/xhdpi.png" platform="android" qualifier="lhdpi" /> <!-- 720x1280 -->
       	<preference name="SplashScreenDelay" value="3000"/>
     </platform>
-        
-        
-    <!-- PLATFORM SELECTION -->
-
-    <gap:platform name="android" />
-    <!-- <gap:platform name="winphone" /> -->
-
         
     
     <!-- GENERAL PREFERENCES -->
