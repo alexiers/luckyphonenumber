@@ -69,7 +69,8 @@
 -->
 
     <access origin="*" />
-    <gap:plugin name="org.apache.cordova.inappbrowser"/>
+    <!-- <gap:plugin name="org.apache.cordova.inappbrowser"/> -->
+    <plugin name="cordova-plugin-inappbrowser" spec="1.0.1" source="pgb" />
     
     <!-- AdMob Plugin -->
     <gap:plugin name="cordova-plugin-admobpro" source="npm"/>
