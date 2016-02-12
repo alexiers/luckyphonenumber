@@ -16,7 +16,7 @@
     
     <!-- PLATFORM SELECTION -->
 
-    <gap:platform name="android" />
+    <platform name="android" />
     <!-- <gap:platform name="winphone" /> -->   
     
         
@@ -79,8 +79,8 @@
     
     
     <!-- AdMob Plugin -->
-    <!-- <gap:plugin name="cordova-plugin-admobpro" source="npm"/> -->
-    <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" />
+    <gap:plugin name="cordova-plugin-admobpro" source="npm"/>
+    <!-- <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" /> -->
     
     <!-- TappX -->
     <!-- gap:plugin name="com.ads.tappx" source="plugins.cordova.io" / -->
