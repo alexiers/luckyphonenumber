@@ -7,60 +7,45 @@
 <!--<![endif]-->
 
 <head>
-    <!-- Basic Page Needs
-================================================== -->
+    <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Lucky phone number</title>
     <meta name="description" content="Is your phone number right for you? Or is it working against you? Lucky Phone Number analyzes your phone numbers and show you how lucky they are for you based on Feng Shui principles and algorithms." />
     <meta name="keywords" content="lucky, phone, number, feng, shui, principle, mobile" />
-
-    <!-- Mobile Specific Metas
-================================================== -->
+    <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-================================================== -->
+    <!-- CSS -->
     <link rel="stylesheet" href="stuff/main.css">
-
-    <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-    <!-- Javascript
-================================================== -->
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- Javascript -->
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
-    <!-- Favicons
-================================================== -->
-
 </head>
 
 <body onresize="onResize()" class="is-loading">
-
     <!-- Wrapper -->
     <div id="wrapper">
         <!-- Main -->
         <section id="main">
+            
             <div id="mainHeader">
                 <header>
                     <h1 style="font-weight:bold;">How lucky is your phone number?</h1>
                     <p></p>
                 </header>
             </div>
-
+            
             <div id="details">
                 <form action="#" name="forma" id="theForm">
                     <div class="field">
-                        <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" />
-                    </div>
+                        <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" /> </div>
                     <ul class="actions">
-                        <li><a href="#" class="button" type="button" onclick="suminp()">Analyze</a>
-                        </li>
+                        <li><a href="#" class="button" type="button" onclick="suminp()">Analyze</a> </li>
                     </ul>
                 </form>
             </div>
-
+            
+            <!-- Results -->
             <div id="results">
                 <h6 id="pnumber"></h6>
                 <p></p>
@@ -93,30 +78,23 @@
                 </div>
                 <div id="prophecyabove" class="props">
                     <h3>Variables</h3>
-                    <p><b>The number exceeded the scope of analysis!</b>
-                    </p>
+                    <p><b>The number exceeded the scope of analysis!</b> </p>
                     <p>It is a result of their extraordinary characteristics, usually celebrities, big shot, so lucky symbols could not thesis.</p>
                 </div>
                 <div id="pleaseenternumber" class="props">
-                    <p><b>Please enter a phone number!</b>
-                    </p>
+                    <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/>
-                <a href="#" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial(); ">Enter New Number</a>
-            </div>
-
-            <footer>
-                
-            </footer>
+                <br/> <a href="#" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial(); ">Enter New Number</a> </div>
+            <footer> </footer>
         </section>
+        
         <!-- Footer -->
         <footer id="footer" style="font-size:0.8em;">
             <ul class="copyright">
                 <li>&copy;
                     <script type="text/javascript">
                         document.write(new Date().getFullYear());
-                    </script> Lucky Phone Number
-                </li>
+                    </script> Lucky Phone Number </li>
                 <li><a href="http://luckyphonenumber.tk/privacy-policy.html">Privacy Policy</a></li>
             </ul>
         </footer>
@@ -124,12 +102,13 @@
     
     <!-- essential for showing adMob Interstitial ads -->
     <div style="display:none">
-            <input type='checkbox' id='autoshow' checked />auto show when ready<br />
-            <div id='sizeinfo'></div>
+        <input type='checkbox' id='autoshow' checked />auto show when ready
+        <br />
+        <div id='sizeinfo'></div>
     </div>
     <!-- END Ads -->
-
-
+    
+    
     <!-- End Document ================================================== -->
 
 
