@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
+        id          = "com.alexmobii.luckyphonenumber"
+        version = "1.8.0"
+        versionCode = "10800">
+
+    <name>Lucky Phone Number</name>
+
+    <description>
+        Find out how lucky is your phone number! Is your phone number right for you? Or is it working against you? Lucky Phone Number analyzes your phone numbers and show you how lucky they are for you based on Feng Shui principles and algorithms.
+    </description>
+
+    <author href="http://alexiers.github.io" email="alexiers@gmail.com">Alex Mobii</author>
+    
+    <!-- PLATFORM SELECTION -->
+
+    <platform name="android" />
+    <!-- <gap:platform name="winphone" /> -->   
+    
+        
+    <!-- ICONS -->
+	<icon src="img/icon-512.png" width="512" height="512" />	
+        
+    <!-- SPLASH SCREENS -->
+    
+    <platform name="android">
+       	<splash src="img/ldpi.png" platform="android" qualifier="ldpi" /> <!-- 200x320 -->
+       	<splash src="img/mdpi.png" platform="android" qualifier="mhdpi" /> <!-- 320x480 -->
+       	<splash src="img/hdpi.png" platform="android" qualifier="hdpi" /> <!-- 480x800 -->
+      	<splash src="img/xhdpi.png" platform="android" qualifier="xhdpi" /> <!-- 720x1280 -->
+      	<preference name="SplashScreenDelay" value="3000"/>
+    </platform>
+        
+    
+    <!-- GENERAL PREFERENCES -->
+        
+    <preference name="phonegap-version" value="cli-6.4.0" /> 
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
+         
+         
+    <!-- ANDROID PREFERENCES -->
+    
+    <supports-screens android:anyDensity="true" android:resizeable="true" 
+    android:smallScreens="true" 
+    android:normalScreens="true" 
+    android:largeScreens="true" 
+    android:xlargeScreens="true" />
+        
+    <preference name="android-minSdkVersion" value="14" /> <!-- minimum Android 2.1 -->
+    <!-- <preference name="android-maxSdkVersion" value="19" /> maximum Android 4.4 -->
+    <preference name="android-targetSdkVersion" value="22" /> <!-- targeting Android 5.1 -->
+    <preference name="android-installLocation" value="auto" />
+    <preference name="splash-screen-duration" value="2500" />
+    
+    <preference name="android-build-tool" value="gradle" />
+
+    <preference name="load-url-timeout" value="20000" />
+        
+    <!-- PHONEGAP API FEATURES PREFERENCES -->
+        
+    <preference name="permissions" value="none"/>
+    <!--
+<feature name="http://api.phonegap.com/1.0/battery"/>
+<feature name="http://api.phonegap.com/1.0/camera"/>
+<feature name="http://api.phonegap.com/1.0/contacts"/>
+<feature name="http://api.phonegap.com/1.0/file"/>
+<feature name="http://api.phonegap.com/1.0/geolocation"/>
+<feature name="http://api.phonegap.com/1.0/media"/>
+<feature name="http://api.phonegap.com/1.0/network"/>
+<feature name="http://api.phonegap.com/1.0/notification"/>
+-->
+    <plugin name="cordova-plugin-whitelist" />
+    <access origin="*" />
+    <!-- <gap:plugin name="org.apache.cordova.inappbrowser"/> -->
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+    
+    
+    <!-- AdMob Plugin -->
+    <plugin name="cordova-plugin-admobpro" source="npm"/>
+    <!-- <gap:plugin name="com.google.cordova.admob" source="plugins.cordova.io" /> -->
+    
+    <!-- TappX -->
+    <!-- gap:plugin name="com.ads.tappx" source="plugins.cordova.io" / -->
+    
+		
+</widget>
