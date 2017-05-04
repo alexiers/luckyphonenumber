@@ -36,7 +36,7 @@
     
     <!-- GENERAL PREFERENCES -->
         
-    <preference name="phonegap-version" value="cli-6.0.0" />
+    <preference name="phonegap-version" value="cli-6.4.0" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
          
@@ -51,7 +51,7 @@
         
     <preference name="android-minSdkVersion" value="14" /> <!-- minimum Android 2.1 -->
     <!-- <preference name="android-maxSdkVersion" value="19" /> maximum Android 4.4 -->
-    <preference name="android-targetSdkVersion" value="21" /> <!-- targeting Android 4.4 -->
+    <preference name="android-targetSdkVersion" value="22" /> <!-- targeting Android 5.1 -->
     <preference name="android-installLocation" value="auto" />
     <preference name="splash-screen-duration" value="2500" />
     
@@ -75,7 +75,7 @@
     <plugin name="cordova-plugin-whitelist" />
     <access origin="*" />
     <!-- <gap:plugin name="org.apache.cordova.inappbrowser"/> -->
-    <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
+    <!-- <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" /> -->
     
     
     <!-- AdMob Plugin -->
