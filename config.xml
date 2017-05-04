@@ -47,10 +47,13 @@
     <!-- Define app icon for each platform. -->
     <icon src="img/icon-512.png" />
     <!-- Define app splash screen for each platform. -->
+    <splash src="splash-xhdpi.png" />
+    <!--
     <splash src="splash-ldpi.png" platform="android" qualifier="ldpi" />
     <splash src="splash-mdpi.png" platform="android" qualifier="mdpi" />
     <splash src="splash-hdpi.png" platform="android" qualifier="hdpi" />
     <splash src="splash-xhdpi.png" platform="android" qualifier="xhdpi" />
+    -->
 
     <!--
         Define access to external domains.
