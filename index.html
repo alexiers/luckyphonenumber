@@ -13,7 +13,6 @@
     <title>Lucky phone number</title>
     <meta name="description" content="Is your phone number right for you? Or is it working against you? Lucky Phone Number analyzes your phone numbers and show you how lucky they are for you based on Feng Shui principles and algorithms." />
     <meta name="keywords" content="lucky, phone, number, feng, shui, principle, mobile" />
-    
 
     <!-- Mobile Specific Metas
 ================================================== -->
@@ -21,7 +20,7 @@
 
     <!-- CSS
 ================================================== -->
-    <link rel="stylesheet" href="stuff/main.css">
+    <link rel="stylesheet" href="/stuff/main.css">
 
     <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,14 +30,6 @@
 ================================================== -->
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script>
-        if ('addEventListener' in window) {
-            window.addEventListener('load', function () {
-                document.body.className = document.body.className.replace(/\bis-loading\b/, '');
-            });
-            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-        }
-    </script>
 
     <!-- Favicons
 ================================================== -->
@@ -47,11 +38,6 @@
 
 <body onresize="onResize()" class="is-loading">
 
-
-
-    <!-- Primary Page Layout
-================================================== -->
-   
     <!-- Wrapper -->
     <div id="wrapper">
         <!-- Main -->
@@ -136,10 +122,16 @@
         </footer>
     </div>
     
+    <!-- essential for showing adMob Interstitial ads -->
+    <div style="display:none">
+            <input type='checkbox' id='autoshow' checked />auto show when ready<br />
+            <div id='sizeinfo'></div>
+    </div>
+    <!-- END Ads -->
 
 
-    <!-- End Document
-================================================== -->
+    <!-- End Document ================================================== -->
+
 
     
     <script>
@@ -290,6 +282,12 @@
 
 <!-- Modal -->
 	<script type="text/javascript">
+		function iklan() {
+			setTimeout(function() {
+				$('#modal2').trigger('openModal');
+			}, 500);
+		}
+		
 		$(window).load(function() {
             
             setInterval(function() {
