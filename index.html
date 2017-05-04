@@ -102,16 +102,7 @@
     <!-- Scripts -->
     <!-- <script src="http://luckyphonenumber.tk/jquery.min.js"></script> -->
     <script src="jquery.min.js"></script>
-    <script>
-        if ('addEventListener' in window) {
-            window.addEventListener('load', function() {
-                document.body.className = document.body.className.replace(/\bis-loading\b/, '');
-            });
-            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-        }
-    </script>
-
-
+    
     <script>
         function redBG() {}
 
@@ -260,6 +251,15 @@
 			
 		});
         
+    </script>
+    
+    <script>
+        if ('addEventListener' in window) {
+            window.addEventListener('load', function() {
+                document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+            });
+            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
     </script>
     <!-- END Other stuff -->
 
