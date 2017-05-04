@@ -36,7 +36,7 @@
     
     <!-- GENERAL PREFERENCES -->
         
-    <preference name="phonegap-version" value="cli-6.4.0" />
+    <preference name="phonegap-version" value="cli-5.4.0" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
          
