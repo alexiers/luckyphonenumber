@@ -251,6 +251,14 @@
             document.addEventListener('onAdDismiss', function(data){});
         }
         
+        $(window).load(function() {
+            
+            setInterval(function() {
+                AdMob.showInterstitial();
+            }, 38000);
+			
+		});
+        
     </script>
     <!-- END Other stuff -->
 
