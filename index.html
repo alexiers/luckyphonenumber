@@ -92,7 +92,7 @@
                         document.write(new Date().getFullYear());
                     </script> Lucky Phone Number
                 </li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="http://luckyphonenumber.tk/privacy-policy.html">Privacy Policy</a></li>
             </ul>
         </footer>
     </div>
@@ -109,9 +109,6 @@
             document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
         }
     </script>
-
-
-
 
 
     <script>
@@ -159,7 +156,8 @@
     </script>
 
     
-<!-- Other stuff -->
+    
+    <!-- Other stuff -->
     <script>
         //START Admob
         var admobid = {};
@@ -168,11 +166,7 @@
                 banner: 'ca-app-pub-3545086673654393/5969342403',
                 interstitial: 'ca-app-pub-3545086673654393/7166874008'
             };
-        }  else {
-            admobid = { // for Windows Phone
-                banner: 'ca-app-pub-3545086673654393/5969342403',
-                interstitial: 'ca-app-pub-3545086673654393/7166874008'
-            };
+        }  else { };
         }
         //END Admob
         
@@ -180,6 +174,7 @@
         // Wait for Cordova to load
          //
         document.addEventListener("deviceready", onDeviceReady, false);
+
          // Cordova is ready
          //
         function onDeviceReady() {
@@ -187,10 +182,13 @@
             //iabRef.addEventListener('loadstart', iabLoadStart);
             //iabRef.addEventListener('loadstop', iabLoadStop);
             //iabRef.addEventListener('exit', iabClose);
+
             $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
+
                 e.preventDefault();
                 var $this = $(this);
                 var target = $this.data('inAppBrowser') || '_system';
+
                 window.open($this.attr('href'), target, 'location=no');
             });
             
@@ -255,6 +253,7 @@
         
     </script>
     <!-- END Other stuff -->
+
 
 
 <!-- Start of StatCounter Code for Dreamweaver -->
