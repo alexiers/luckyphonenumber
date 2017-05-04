@@ -3,8 +3,8 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:android   = "http://schemas.android.com/apk/res/android"
         id          = "com.alexmobii.luckyphonenumber"
-        version = "2.0.0"
-        versionCode = "20000">
+        version = "1.8.0"
+        versionCode = "10800">
 
     <name>Lucky Phone Number</name>
 
@@ -36,7 +36,7 @@
     
     <!-- GENERAL PREFERENCES -->
         
-    <preference name="phonegap-version" value="cli-6.4.0" />
+    <preference name="phonegap-version" value="cli-6.4.0" /> 
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" /> <!-- remove the upper bar on iOS and Android -->
          
@@ -75,7 +75,7 @@
     <plugin name="cordova-plugin-whitelist" />
     <access origin="*" />
     <!-- <gap:plugin name="org.apache.cordova.inappbrowser"/> -->
-    <!-- <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" /> -->
+    <plugin name="cordova-plugin-inappbrowser" spec="1.7.1" source="pgb" />
     
     
     <!-- AdMob Plugin -->
