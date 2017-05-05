@@ -43,7 +43,7 @@
                     <div class="field">
                         <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" /> </div>
                     <ul class="actions">
-                        <li><a href="#" class="button" type="button" onclick="suminp(); AdMob.showInterstitial();">Analyze</a> </li>
+                        <li><a class="button" type="button" onclick="suminp(); AdMob.showInterstitial();">Analyze</a> </li>
                     </ul>
                 </form>
             </div>
@@ -86,7 +86,7 @@
                 <div id="pleaseenternumber" class="props">
                     <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/> <a href="#modal" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial();">Enter New Number</a> </div>
+                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff(); catwalk(); showInterstitialAd();">Enter New Number</a> </div>
             <footer> </footer>
         </section>
         <!-- Footer -->
@@ -103,9 +103,9 @@
     
     
     <!-- Modal Window (for Leadbolt Ads) -->
-    <div class="remodal" data-remodal-id="modal">
+    <div data-remodal-id="modal">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <img src="http://www.shakeout.org/2008/downloads/ShakeOut_BannerAds_GetReady_300x250_v3.gif"width="300" height="250">
+        <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script>
     </div>
     <!-- END Modal Window -->
     
@@ -121,6 +121,12 @@
     
     <!-- End Document ================================================== -->
     <script>
+        //Modal
+        function catwalk() {
+         $('[data-remodal-id=modal]').remodal().open();
+         "use strict"   
+        }
+        
         //BG Change
         function redBG() {
             "use strict"
@@ -129,7 +135,9 @@
         function greenBG() {
             "use strict"
         }
+        //critical for website to show
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        
         //Post Contact
         function postContactToGoogle() {
             if (typeof myCity === "undefined") {
@@ -206,7 +214,7 @@
         
         
         
-        //AdMob
+        ///////// AdMob /////////
         
         //Prepare Interstitial
         var isPendingInterstitial = false;
@@ -267,7 +275,8 @@
             }, 38000);
         });
     </script>
-    <!-- Modal -->
+    
+    
     <!-- Start of StatCounter Code for Dreamweaver -->
     <script type="text/javascript">
         var sc_project = 9832759;
