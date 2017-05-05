@@ -53,14 +53,15 @@
 
 .remodal {
   box-sizing: border-box;
-  margin-bottom: 0px;
-  padding: 0px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 35px;
 
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 
   color: #2b2e38;
-  background: none;
+  background: #fff;
 }
 
 .remodal.remodal-is-opening,
@@ -158,16 +159,34 @@
 
   border: 0;
   outline: 0;
+
 }
 
 .remodal-confirm {
   color: #fff;
   background: #81c784;
+    /**From Main CSS*/
+    height: 2.75em;
+    line-height: 2.75em;
+    padding: 0 1.5em;
+    background-color: #81c784 /*transparent*/;
+    border-radius: 4px;
+    border: solid 1px /*#c8cccf*/ #66bb6a;
+    color: /* #414f57 */ #fff !important;
+    text-transform: none;
+    font-family: Helvetica, sans-serif !important;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .remodal-confirm:hover,
 .remodal-confirm:focus {
   background: #66bb6a;
+    /**From Main CSS*/
+    border-color: /*#ff7496*/ #fff;
+    color: /*#ff7496*/#fff !important;
 }
 
 .remodal-cancel {

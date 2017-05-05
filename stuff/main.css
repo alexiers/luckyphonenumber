@@ -651,10 +651,12 @@ button,
     height: 2.75em;
     line-height: 2.75em;
     padding: 0 1.5em;
-    background-color: transparent;
+    background-color: #81c784 /*transparent*/;
     border-radius: 4px;
-    border: solid 1px #c8cccf;
-    color: #414f57 !important;
+    border: solid 1px /*#c8cccf*/ #66bb6a;
+    color: /* #414f57 */ #fff !important;
+    text-transform: none;
+    font-family: Helvetica, sans-serif;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -666,8 +668,9 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover,
 .button:hover {
-    border-color: #ff7496;
-    color: #ff7496 !important;
+    border-color: /*#ff7496*/ #fff;
+    color: /*#ff7496*/#fff !important;
+    background-color: #66bb6a;
 }
 
 input[type="submit"].icon,
