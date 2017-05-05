@@ -135,13 +135,6 @@
     </div>
     <!-- END Modal Window -->
     
-    
-    <!-- essential for showing adMob Interstitial ads -->
-    <div style="display:none">
-        <input type='checkbox' id='autoshow' checked />auto show when ready
-        <br />
-        <div id='sizeinfo'></div>
-    </div>
     <!-- END Ads -->
     
     
@@ -152,7 +145,6 @@
         //Modal
         function Intro() {
          $('[data-remodal-id=modal]').remodal().open();
-         CheckVersion();
          "use strict"   
         }
         function AboutUs() {
@@ -273,8 +265,9 @@
             admob.setOptions({
                 publisherId:          "ca-app-pub-3545086673654393/5969342403",
                 interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
-                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",        // Optional
-                tappxShare:           0.1                                        // Optional
+                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",
+                tappxShare:           0.1,
+                isTesting:            true
             });  
             document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
             prepareIntestitialAd();
@@ -314,16 +307,7 @@
     <!-------------------------------------------------
     Check App Version and Prompt to Update IF OLDER
     ----------------------------------------------------->
-    <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
-    <script>
-        //Version Record (Update this with every new version)
-        var ThisVersion = "1.9.0";
-        
-        //Open Modal Window that asks users to download new version
-        function DownloadNewVersion() {
-         $('[data-remodal-id=modal3]').remodal().open();
-        }
-    </script>
+    
     
     
     <!-- Start of StatCounter Code for Dreamweaver -->
