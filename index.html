@@ -20,11 +20,16 @@
     <!-- Javascript -->
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
+    <!-- Remodal Modal Window -->
+    <link rel="stylesheet" href="remodal/remodal.css">
+    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
+    
 </head>
 
 <body onresize="onResize()" class="is-loading">
     <!-- Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" class="remodal-bg">
         <!-- Main -->
         <section id="main">
             <div id="mainHeader">
@@ -38,7 +43,7 @@
                     <div class="field">
                         <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" /> </div>
                     <ul class="actions">
-                        <li><a href="#" class="button" type="button" onclick="suminp()">Analyze</a> </li>
+                        <li><a href="#" class="button" type="button" onclick="suminp(); AdMob.showInterstitial();">Analyze</a> </li>
                     </ul>
                 </form>
             </div>
@@ -81,7 +86,7 @@
                 <div id="pleaseenternumber" class="props">
                     <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/> <a href="#" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial(); ">Enter New Number</a> </div>
+                <br/> <a href="#modal" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial();">Enter New Number</a> </div>
             <footer> </footer>
         </section>
         <!-- Footer -->
@@ -95,6 +100,16 @@
             </ul>
         </footer>
     </div>
+    
+    
+    <!-- Modal Window (for Leadbolt Ads) -->
+    <div class="remodal" data-remodal-id="modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <img src="http://www.shakeout.org/2008/downloads/ShakeOut_BannerAds_GetReady_300x250_v3.gif"width="300" height="250">
+    </div>
+    <!-- END Modal Window -->
+    
+    
     <!-- essential for showing adMob Interstitial ads -->
     <div style="display:none">
         <input type='checkbox' id='autoshow' checked />auto show when ready
@@ -102,6 +117,8 @@
         <div id='sizeinfo'></div>
     </div>
     <!-- END Ads -->
+    
+    
     <!-- End Document ================================================== -->
     <script>
         //BG Change
@@ -137,59 +154,10 @@
                 , }
             });
         }
+        
         //Sapangapat Pepentiping
-        function resetStuff() {
-            $("#inputr").val('');
-            $("#main").css({
-                'transform-origin': '50% 50%'
-                , 'transform': 'none'
-            });
-            $("#mainHeader").slideDown("slow");
-            $("#details").slideDown("slow");
-            $("#results").slideUp("fast", function () {
-                $(".props").hide();
-            });
-        }
-
-        function ResultLook() {
-            $("#main").css({
-                'transform-origin': '50% 50%'
-                , 'transform': 'rotateX(360deg)'
-            });
-            $("#mainHeader").slideUp("fast");
-            $("#details").slideUp("fast");
-            $("#results").slideDown("slow");
-        }
-
-        function suminp() {
-            var phoneNumberRaw = $("#inputr").val();
-            var phoneNumber = phoneNumberRaw.replace(/\D/g, "");
-            //Start processForm
-            function processForm() {
-                while (phoneNumber.length > 2) {
-                    var outp = 0
-                    for (i = 0; i < phoneNumber.length; i++) {
-                        outp = outp + parseInt(phoneNumber.charAt(i))
-                    }
-                    phoneNumber = outp + ""
-                }
-                window.finalTally = phoneNumber - (Math.floor(phoneNumber / 6) * 6);
-                $("#prophecy" + finalTally).fadeIn("fast", function () {});
-                ResultLook();
-                $("#pnumber").hide().fadeIn(5000).replaceWith('<h6 id="pnumber"><em>' + 'Phone number' + ':' + '&nbsp' + $("#inputr").val() + '</em></h6>');
-                if ((finalTally == 0) || (finalTally == 3)) {
-                    redBG();
-                }
-            }
-            //END Process Form
-            if (phoneNumber == '') {
-                alert("Please enter phone number");
-            }
-            else {
-                processForm();
-                postContactToGoogle();
-            }
-        }
+        var _0xe53f=["","\x76\x61\x6C","\x23\x69\x6E\x70\x75\x74\x72","\x35\x30\x25\x20\x35\x30\x25","\x6E\x6F\x6E\x65","\x63\x73\x73","\x23\x6D\x61\x69\x6E","\x73\x6C\x6F\x77","\x73\x6C\x69\x64\x65\x44\x6F\x77\x6E","\x23\x6D\x61\x69\x6E\x48\x65\x61\x64\x65\x72","\x23\x64\x65\x74\x61\x69\x6C\x73","\x66\x61\x73\x74","\x68\x69\x64\x65","\x2E\x70\x72\x6F\x70\x73","\x73\x6C\x69\x64\x65\x55\x70","\x23\x72\x65\x73\x75\x6C\x74\x73","\x72\x6F\x74\x61\x74\x65\x58\x28\x33\x36\x30\x64\x65\x67\x29","\x72\x65\x70\x6C\x61\x63\x65","\x6C\x65\x6E\x67\x74\x68","\x63\x68\x61\x72\x41\x74","\x66\x69\x6E\x61\x6C\x54\x61\x6C\x6C\x79","\x66\x6C\x6F\x6F\x72","\x66\x61\x64\x65\x49\x6E","\x23\x70\x72\x6F\x70\x68\x65\x63\x79","\x3C\x68\x36\x20\x69\x64\x3D\x22\x70\x6E\x75\x6D\x62\x65\x72\x22\x3E\x3C\x65\x6D\x3E","\x50\x68\x6F\x6E\x65\x20\x6E\x75\x6D\x62\x65\x72","\x3A","\x26\x6E\x62\x73\x70","\x3C\x2F\x65\x6D\x3E\x3C\x2F\x68\x36\x3E","\x72\x65\x70\x6C\x61\x63\x65\x57\x69\x74\x68","\x23\x70\x6E\x75\x6D\x62\x65\x72","\x50\x6C\x65\x61\x73\x65\x20\x65\x6E\x74\x65\x72\x20\x70\x68\x6F\x6E\x65\x20\x6E\x75\x6D\x62\x65\x72"];function resetStuff(){$(_0xe53f[2])[_0xe53f[1]](_0xe53f[0]);$(_0xe53f[6])[_0xe53f[5]]({"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D\x2D\x6F\x72\x69\x67\x69\x6E":_0xe53f[3],"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D":_0xe53f[4]});$(_0xe53f[9])[_0xe53f[8]](_0xe53f[7]);$(_0xe53f[10])[_0xe53f[8]](_0xe53f[7]);$(_0xe53f[15])[_0xe53f[14]](_0xe53f[11],function(){$(_0xe53f[13])[_0xe53f[12]]()})}function ResultLook(){$(_0xe53f[6])[_0xe53f[5]]({"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D\x2D\x6F\x72\x69\x67\x69\x6E":_0xe53f[3],"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D":_0xe53f[16]});$(_0xe53f[9])[_0xe53f[14]](_0xe53f[11]);$(_0xe53f[10])[_0xe53f[14]](_0xe53f[11]);$(_0xe53f[15])[_0xe53f[8]](_0xe53f[7])}function suminp(){var _0x6168x4=$(_0xe53f[2])[_0xe53f[1]]();var _0x6168x5=_0x6168x4[_0xe53f[17]](/\D/g,_0xe53f[0]);function _0x6168x6(){while(_0x6168x5[_0xe53f[18]]> 2){var _0x6168x7=0;for(i= 0;i< _0x6168x5[_0xe53f[18]];i++){_0x6168x7= _0x6168x7+ parseInt(_0x6168x5[_0xe53f[19]](i))};_0x6168x5= _0x6168x7+ _0xe53f[0]};window[_0xe53f[20]]= _0x6168x5- (Math[_0xe53f[21]](_0x6168x5/ 6)* 6);$(_0xe53f[23]+ finalTally)[_0xe53f[22]](_0xe53f[11],function(){});ResultLook();$(_0xe53f[30])[_0xe53f[12]]()[_0xe53f[22]](5000)[_0xe53f[29]](_0xe53f[24]+ _0xe53f[25]+ _0xe53f[26]+ _0xe53f[27]+ $(_0xe53f[2])[_0xe53f[1]]()+ _0xe53f[28]);if((finalTally== 0)|| (finalTally== 3)){redBG()}}if(_0x6168x5== _0xe53f[0]){alert(_0xe53f[31])}else {_0x6168x6();postContactToGoogle()}}
+        
         //KeyPress
         $(document).ready(function() {
             $("#results").hide();
@@ -343,6 +311,9 @@
         </div>
     </noscript>
     <!-- End of StatCounter Code for Dreamweaver -->
+    
+    <!-- Remodal Modal Window -->
+    <script src="remodal/remodal.js"></script>
 </body>
 
 </html>
