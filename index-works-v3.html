@@ -203,67 +203,96 @@
                 }
             });
         });
-        
-        
-        
-        //AdMob
-        
-        //Prepare Interstitial
-        var isPendingInterstitial = false;
-        var isAutoshowInterstitial = false;
-        
-        function prepareInterstitialAd() {
-            if (!isPendingInterstitial) { // We won't ask for another interstitial ad if we already have an available one
-                admob.requestInterstitialAd({
-                    autoShowInterstitial: isAutoshowInterstitial
-                });
-            }
+        //START Admob
+        var admobid = {};
+        if (/(android)/i.test(navigator.userAgent)) {
+            admobid = { // for Android
+                banner: 'ca-app-pub-3545086673654393/5969342403'
+                , interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
         }
-        
-        function onAdLoadedEvent(e) {
-            if (e.adType === admob.AD_TYPE.INTERSTITIAL && !isAutoshowInterstitial) {
-                isPendingInterstitial = true;
-            }
+        else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-3545086673654393/5969342403'
+                , interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
         }
-        
-        function onDeviceReady() {
-            
-            document.removeEventListener('deviceready', onDeviceReady, false);
-            admob.setOptions({
-                publisherId:          "ca-app-pub-3545086673654393/5969342403",
-                interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
-            });  
-            document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
-            prepareIntestitialAd();
-            
-        }//END onDeviceReady
-        
+        //END Admob
+        // Wait for Cordova to load
+        //
         document.addEventListener("deviceready", onDeviceReady, false);
-        
-        
-        //Show Interstitial
-        function showInterstitialAd() {
-            if (isPendingInterstitial) {
-                admob.showInterstitialAd(function () {
-                    isPendingInterstitial = false;
-                    isAutoshowInterstitial = false;
-                    prepareInterstitialAd();
+        // Cordova is ready
+        //
+        function onDeviceReady() {
+            //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+            //iabRef.addEventListener('loadstart', iabLoadStart);
+            //iabRef.addEventListener('loadstop', iabLoadStop);
+            //iabRef.addEventListener('exit', iabClose);
+            
+            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var target = $this.data('inAppBrowser') || '_system';
+                window.open($this.attr('href'), target, 'location=no');
+            });
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId: admobid.banner
+                    , position: AdMob.AD_POSITION.BOTTOM_CENTER
+                    , autoShow: true
                 });
-            } else {
-                // The interstitial is not prepared, so in this case, we want to show the interstitial as soon as possible
-                isAutoshowInterstitial = true;
-                admob.requestInterstitialAd({
-                    autoShowInterstitial: isAutoshowInterstitial
-                });
+                initAd();
+                prepareInterstitial();
             }
+        } //END-ondeviceready
+        function prepareInterstitial() {
+            var autoshow = document.getElementById('autoshow').checked;
+            AdMob.prepareInterstitial({
+                adId: admobid.interstitial
+                , autoShow: true
+            });
         }
-        
-        
+
+        function onResize() {
+            var s = document.getElementById('sizeinfo');
+            s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
+        }
+
+        function initAd() {
+            var defaultOptions = {
+                // adSize: 'SMART_BANNER',
+                // width: integer, // valid when set adSize 'CUSTOM'
+                // height: integer, // valid when set adSize 'CUSTOM'
+                position: AdMob.AD_POSITION.BOTTOM_CENTER
+                , // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+                bgColor: 'black', // color name, or '#RRGGBB'
+                // x: integer,      // valid when set position to 0 / POS_XY
+                // y: integer,      // valid when set position to 0 / POS_XY
+                isTesting: false, // set to true, to receiving test ad for testing purpose
+                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+            };
+            AdMob.setOptions(defaultOptions);
+            registerAdEvents();
+        }
+
+        function registerAdEvents() {
+            // new events, with variable to differentiate: adNetwork, adType, adEvent
+            document.addEventListener('onAdFailLoad', function (data) {
+                //alert('error: ' + data.error + 
+                //      ', reason: ' + data.reason + 
+                //      ', adNetwork:' + data.adNetwork + 
+                //      ', adType:' + data.adType + 
+                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
+            document.addEventListener('onAdLoaded', function (data) {});
+            document.addEventListener('onAdPresent', function (data) {});
+            document.addEventListener('onAdLeaveApp', function (data) {});
+            document.addEventListener('onAdDismiss', function (data) {});
+        }
         //On Load
         $(window).load(function () {
-            admob.createBannerView();
             setInterval(function () {
-                showInterstitialAd();
+                AdMob.showInterstitial();
             }, 38000);
         });
     </script>

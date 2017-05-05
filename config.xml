@@ -37,7 +37,8 @@
     <plugin name="cordova-plugin-inappbrowser" />
 
     <!-- Third party plugins -->
-    <plugin name="cordova-plugin-admobpro" source="npm"/>
+    <!-- <plugin name="cordova-plugin-admobpro" source="npm"/> -->
+    <gap:plugin name="phonegap-admob" source="npm"/>
     <dependency id="cordova-plugin-googleplayservices"/>
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
