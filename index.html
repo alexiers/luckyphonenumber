@@ -43,7 +43,7 @@
                     <div class="field">
                         <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" /> </div>
                     <ul class="actions">
-                        <li><a class="button" type="button" onclick="suminp(); AdMob.showInterstitial();">Analyze</a> </li>
+                        <li><a class="button" type="button" onclick="suminp();">Analyze</a> </li>
                     </ul>
                 </form>
             </div>
@@ -130,7 +130,7 @@
             A new version of Lucky Phone Number is now available on the Google Play Store with some bug fixes and performance improvements as well as refinements to the Feng Shui algorithms used within the app. Update the app today!
         </p>
         <br>
-        <a href="https://play.google.com/store/apps/details?id=com.alexmobii.luckyphonenumber" target="_blank" class="button">OK</a>
+        <a href="https://play.google.com/store/apps/details?id=com.alexmobii.luckyphonenumber" target="_blank" class="button" onclick="$('[data-remodal-id=modal3]').remodal().close();">OK</a>
         <!-- <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script> -->
     </div>
     <!-- END Modal Window -->
@@ -150,7 +150,7 @@
     <!-------------------------------------------------
     Check App Version and Prompt to Update IF OLDER
     ----------------------------------------------------->
-    <script type="text/javascript" src="http://luckyphonenumber.tk/AndroidAppVersionCheck.js" async></script>
+    <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
     <script>
         //Version Record (Update this with every new version)
         var ThisVersion = "2.0.0";
