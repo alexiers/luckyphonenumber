@@ -43,7 +43,7 @@
                     <div class="field">
                         <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off" /> </div>
                     <ul class="actions">
-                        <li><a href="#" class="button" type="button" onclick="suminp(); AdMob.showInterstitial();">Analyze</a> </li>
+                        <li><a class="button" type="button" onclick="suminp();">Analyze</a> </li>
                     </ul>
                 </form>
             </div>
@@ -86,26 +86,52 @@
                 <div id="pleaseenternumber" class="props">
                     <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/> <a href="#modal" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial();">Enter New Number</a> </div>
+                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff(); showInterstitialAd();">Enter New Number</a> </div>
             <footer> </footer>
         </section>
         <!-- Footer -->
         <footer id="footer" style="font-size:0.8em;">
             <ul class="copyright">
-                <li>&copy;
-                    <script type="text/javascript">
-                        document.write(new Date().getFullYear());
-                    </script> Lucky Phone Number </li>
+                <li><a onclick="AboutUs();">About</a></li>
                 <li><a href="http://luckyphonenumber.tk/privacy-policy.html">Privacy Policy</a></li>
-            </ul>
+            </ul> 
         </footer>
     </div>
     
     
-    <!-- Modal Window (for Leadbolt Ads) -->
-    <div class="remodal" data-remodal-id="modal">
-        <button data-remodal-action="close" class="remodal-close"></button>
-        <img src="http://www.shakeout.org/2008/downloads/ShakeOut_BannerAds_GetReady_300x250_v3.gif"width="300" height="250">
+    <!-- Modal Window (for About, Tips and New Version Availability) -->
+    <div data-remodal-id="modal">
+        <div data-remodal-action="close" class="remodal-close"></div>
+        <h1>Quick Tip</h1>
+        <p style="text-transform:none; font-size:1.2em;">
+            For accurate results, insert the phone number that you would give most people. If you mostly receive international calls, include your country code as well.
+        </p>
+        <p style="text-transform:none; font-size:1.2em;">
+            If you're not happy with the result, consider getting a new phone number - it might just make a difference!
+        </p>
+        <br>
+        <button data-remodal-action="confirm" class="remodal-confirm button">OK</button>
+        <!--LeadBolt <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script> -->
+    </div>
+    <div data-remodal-id="modal2">
+        <div data-remodal-action="close" class="remodal-close"></div>
+        <h1>About</h1>
+        <p style="text-transform:none;">
+            Our mobile phone number have great influence on our Chi because we carry our phones with us everywhere, 24/7. This tool may help you improve the direction of some things you cannot control: YOUR LUCK!
+        </p>
+        <br>
+        <button data-remodal-action="confirm" class="remodal-confirm button">OK</button>
+        <!-- <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script> -->
+    </div>
+    <div data-remodal-id="modal3">
+        <div data-remodal-action="close" class="remodal-close"></div>
+        <h1>New Version Available</h1>
+        <p style="text-transform:none;">
+            A new version of Lucky Phone Number is now available on the Google Play Store with some bug fixes and performance improvements as well as refinements to the Feng Shui algorithms used within the app. Update the app today!
+        </p>
+        <br>
+        <a href="https://play.google.com/store/apps/details?id=com.alexmobii.luckyphonenumber" target="_blank" class="button" onclick="$('[data-remodal-id=modal3]').remodal().close();">OK</a>
+        <!-- <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script> -->
     </div>
     <!-- END Modal Window -->
     
@@ -120,7 +146,20 @@
     
     
     <!-- End Document ================================================== -->
+    
+    <!-- PAGE SCRIPT -->
     <script>
+        //Modal
+        function Intro() {
+         $('[data-remodal-id=modal]').remodal().open();
+         CheckVersion();
+         "use strict"   
+        }
+        function AboutUs() {
+         $('[data-remodal-id=modal2]').remodal().open();
+         "use strict"   
+        }
+        
         //BG Change
         function redBG() {
             "use strict"
@@ -129,7 +168,9 @@
         function greenBG() {
             "use strict"
         }
+        //critical for website to show
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        
         //Post Contact
         function postContactToGoogle() {
             if (typeof myCity === "undefined") {
@@ -203,100 +244,89 @@
                 }
             });
         });
-        //START Admob
-        var admobid = {};
-        if (/(android)/i.test(navigator.userAgent)) {
-            admobid = { // for Android
-                banner: 'ca-app-pub-3545086673654393/5969342403'
-                , interstitial: 'ca-app-pub-3545086673654393/7166874008'
-            };
-        }
-        else {
-            admobid = { // for Windows Phone
-                banner: 'ca-app-pub-3545086673654393/5969342403'
-                , interstitial: 'ca-app-pub-3545086673654393/7166874008'
-            };
-        }
-        //END Admob
-        // Wait for Cordova to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
-        // Cordova is ready
-        //
-        function onDeviceReady() {
-            //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
-            //iabRef.addEventListener('loadstart', iabLoadStart);
-            //iabRef.addEventListener('loadstop', iabLoadStop);
-            //iabRef.addEventListener('exit', iabClose);
-            
-            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
-                e.preventDefault();
-                var $this = $(this);
-                var target = $this.data('inAppBrowser') || '_system';
-                window.open($this.attr('href'), target, 'location=no');
-            });
-            if (AdMob) {
-                AdMob.createBanner({
-                    adId: admobid.banner
-                    , position: AdMob.AD_POSITION.BOTTOM_CENTER
-                    , autoShow: true
+        
+        
+        
+        ///////// AdMob /////////
+        
+        //Prepare Interstitial
+        var isPendingInterstitial = false;
+        var isAutoshowInterstitial = false;
+        
+        function prepareInterstitialAd() {
+            if (!isPendingInterstitial) { // We won't ask for another interstitial ad if we already have an available one
+                admob.requestInterstitialAd({
+                    autoShowInterstitial: isAutoshowInterstitial
                 });
-                initAd();
-                prepareInterstitial();
             }
-        } //END-ondeviceready
-        function prepareInterstitial() {
-            var autoshow = document.getElementById('autoshow').checked;
-            AdMob.prepareInterstitial({
-                adId: admobid.interstitial
-                , autoShow: true
-            });
         }
-
-        function onResize() {
-            var s = document.getElementById('sizeinfo');
-            s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
+        
+        function onAdLoadedEvent(e) {
+            if (e.adType === admob.AD_TYPE.INTERSTITIAL && !isAutoshowInterstitial) {
+                isPendingInterstitial = true;
+            }
         }
-
-        function initAd() {
-            var defaultOptions = {
-                // adSize: 'SMART_BANNER',
-                // width: integer, // valid when set adSize 'CUSTOM'
-                // height: integer, // valid when set adSize 'CUSTOM'
-                position: AdMob.AD_POSITION.BOTTOM_CENTER
-                , // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
-                bgColor: 'black', // color name, or '#RRGGBB'
-                // x: integer,      // valid when set position to 0 / POS_XY
-                // y: integer,      // valid when set position to 0 / POS_XY
-                isTesting: false, // set to true, to receiving test ad for testing purpose
-                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
-            };
-            AdMob.setOptions(defaultOptions);
-            registerAdEvents();
+        
+        function onDeviceReady() {
+            
+            document.removeEventListener('deviceready', onDeviceReady, false);
+            admob.setOptions({
+                publisherId:          "ca-app-pub-3545086673654393/5969342403",
+                interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
+                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",
+                tappxShare:           0.1,
+                isTesting: true
+            });  
+            document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
+            prepareIntestitialAd();
+            
+        }//END onDeviceReady
+        
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        
+        //Show Interstitial
+        function showInterstitialAd() {
+            if (isPendingInterstitial) {
+                admob.showInterstitialAd(function () {
+                    isPendingInterstitial = false;
+                    isAutoshowInterstitial = false;
+                    prepareInterstitialAd();
+                });
+            } else {
+                // The interstitial is not prepared, so in this case, we want to show the interstitial as soon as possible
+                isAutoshowInterstitial = true;
+                admob.requestInterstitialAd({
+                    autoShowInterstitial: isAutoshowInterstitial
+                });
+            }
         }
-
-        function registerAdEvents() {
-            // new events, with variable to differentiate: adNetwork, adType, adEvent
-            document.addEventListener('onAdFailLoad', function (data) {
-                //alert('error: ' + data.error + 
-                //      ', reason: ' + data.reason + 
-                //      ', adNetwork:' + data.adNetwork + 
-                //      ', adType:' + data.adType + 
-                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
-            });
-            document.addEventListener('onAdLoaded', function (data) {});
-            document.addEventListener('onAdPresent', function (data) {});
-            document.addEventListener('onAdLeaveApp', function (data) {});
-            document.addEventListener('onAdDismiss', function (data) {});
-        }
+        
         //On Load
         $(window).load(function () {
+            Intro();
+            admob.createBannerView();
             setInterval(function () {
-                AdMob.showInterstitial();
+                showInterstitialAd();
             }, 38000);
         });
     </script>
-    <!-- Modal -->
+    
+    <!-------------------------------------------------
+    Check App Version and Prompt to Update IF OLDER
+    ----------------------------------------------------->
+    <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
+    <script>
+        //Version Record (Update this with every new version)
+        var ThisVersion = "1.9.0";
+        
+        //Open Modal Window that asks users to download new version
+        function DownloadNewVersion() {
+         $('[data-remodal-id=modal3]').remodal().open();
+        }
+    </script>
+    
+    
     <!-- Start of StatCounter Code for Dreamweaver -->
     <script type="text/javascript">
         var sc_project = 9832759;
@@ -313,7 +343,7 @@
     <!-- End of StatCounter Code for Dreamweaver -->
     
     <!-- Remodal Modal Window -->
-    <script src="remodal/remodal.js"></script>
+    <script src="remodal/remodal.min.js"></script>
 </body>
 
 </html>
