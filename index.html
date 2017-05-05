@@ -147,26 +147,12 @@
     
     <!-- End Document ================================================== -->
     
-    <!-------------------------------------------------
-    Check App Version and Prompt to Update IF OLDER
-    ----------------------------------------------------->
-    <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
-    <script>
-        //Version Record (Update this with every new version)
-        var ThisVersion = "2.0.0";
-        
-        //Open Modal Window that asks users to download new version
-        function DownloadNewVersion() {
-         $('[data-remodal-id=modal3]').remodal().open();
-        }
-    </script>
-    
-    
     <!-- PAGE SCRIPT -->
     <script>
         //Modal
         function Intro() {
          $('[data-remodal-id=modal]').remodal().open();
+         CheckVersion();
          "use strict"   
         }
         function AboutUs() {
@@ -288,7 +274,7 @@
                 publisherId:          "ca-app-pub-3545086673654393/5969342403",
                 interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
                 tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",        // Optional
-                tappxShare:           0.3                                        // Optional
+                tappxShare:           0.1                                        // Optional
             });  
             document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
             prepareIntestitialAd();
@@ -318,12 +304,25 @@
         //On Load
         $(window).load(function () {
             Intro();
-            CheckVersion();
             admob.createBannerView();
             setInterval(function () {
                 showInterstitialAd();
             }, 38000);
         });
+    </script>
+    
+    <!-------------------------------------------------
+    Check App Version and Prompt to Update IF OLDER
+    ----------------------------------------------------->
+    <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
+    <script>
+        //Version Record (Update this with every new version)
+        var ThisVersion = "1.9.0";
+        
+        //Open Modal Window that asks users to download new version
+        function DownloadNewVersion() {
+         $('[data-remodal-id=modal3]').remodal().open();
+        }
     </script>
     
     
