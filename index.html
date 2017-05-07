@@ -152,7 +152,6 @@
         //Modal
         function Intro() {
          $('[data-remodal-id=modal]').remodal().open();
-         CheckVersion();
          "use strict"   
         }
         function AboutUs() {
@@ -244,12 +243,6 @@
                 }
             });
         });
-        
-        
-        //On Load
-        $(window).load(function () {
-            Intro();
-        });
     </script>
     
     
@@ -257,7 +250,7 @@
     <script>
         
         admob.createBannerView({
-            autoShowBanner: true
+            autoShowBanner: true;
         });
         
         //Interstitial Function
@@ -309,13 +302,19 @@
                 });
             }
         }
+        
+        //On Load
+        $(window).load(function () {
+            Intro();
+            showInterstitialAd();
+        });
     </script>
     
     
     
     <!-------------------------------------------------
     Check App Version and Prompt to Update IF OLDER
-    ----------------------------------------------------->
+    ----------------------------------------------------
     <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
     <script>
         //Version Record (Update this with every new version)
@@ -325,7 +324,7 @@
         function DownloadNewVersion() {
          $('[data-remodal-id=modal3]').remodal().open();
         }
-    </script>
+    </script>->
     
     
     <!-- Start of StatCounter Code for Dreamweaver -->
