@@ -294,13 +294,34 @@
         function showInterstitialFunc(){
             window.plugins.AdMob.createInterstitialView();	//get the interstitials ready to be shown and show when it's loaded. 
             window.plugins.AdMob.requestInterstitialAd();
-        }        
-        
-        
-        //On Load
-        $(window).load(function () {
-        });
+        }
     </script>
+    
+    <script>
+        //OnDeviceReady
+        // Wait for Cordova to load
+        document.addEventListener("deviceready", onDeviceReady, false);
+        // Cordova is ready
+        function onDeviceReady() {
+            //InAppBrowser
+            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var target = $this.data('inAppBrowser') || '_system';
+                window.open($this.attr('href'), target, 'location=no');
+            });
+            
+            //Initialize AdMob
+            initAd();
+            showBannerFunc();
+            showInterstitialFunc();
+        } //END-ondeviceready
+        
+        /*On Load
+        $(window).load(function () {
+        });*/
+    </script>
+        
     
     
     
