@@ -35,24 +35,23 @@
 
     <!-- Core plugins -->
     <plugin name="cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
 
     <!-- Third party plugins -->
-    <!-- <plugin name="cordova-plugin-admobpro" source="npm"/> -->
     <gap:plugin name="cordova-plugin-admob-simple" source="npm"/>
-    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
-    <!--
-        <plugin name="com.phonegap.plugins.barcodescanner" />
-    -->
 
     <!-- Define app icon for each platform. -->
     <icon src="img/icon-512.png" />
+    
     <!-- Define app splash screen for each platform. -->
-    <!--
-    <splash src="splash-ldpi.png" platform="android" qualifier="ldpi" />
-    <splash src="splash-mdpi.png" platform="android" qualifier="mdpi" />
-    <splash src="splash-hdpi.png" platform="android" qualifier="hdpi" />
-    <splash src="splash-xhdpi.png" platform="android" qualifier="xhdpi" />
-    -->
+    <platform name="android">
+        <!-- you can use any density that exists in the Android project -->        
+        <splash src="splash/splash-hdpi.png" density="port-hdpi"/>
+        <splash src="splash/splash-ldpi.png" density="port-ldpi"/>
+        <splash src="splash/splash-mdpi.png" density="port-mdpi"/>
+        <splash src="splash/splash-xhdpi.png" density="port-xhdpi"/>
+    </platform>
+    <preference name="SplashScreenDelay" value="2000" />
 
     <!--
         Define access to external domains.
