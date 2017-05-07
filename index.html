@@ -19,7 +19,6 @@
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!-- Javascript -->
     <script src="jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 </head>
 
 <body onresize="onResize()" class="is-loading">
@@ -102,7 +101,9 @@
         <div id='sizeinfo'></div>
     </div>
     <!-- END Ads -->
-    <!-- End Document ================================================== -->
+    <!-- End Document
+================================================== -->
+    
     <script>
         //BG Change
         function redBG() {
@@ -128,7 +129,6 @@
                     , "entry_1330399588": finalTally
                     , "entry_276219161": myCountry
                     , "entry_1202517494": myCity
-                    , "entry_1907319424": "Web"
                 }
                 , type: "POST"
                 , dataType: "xml"
@@ -235,6 +235,10 @@
                 }
             });
         });
+    </script>
+    
+    <!-- Other stuff -->
+    <script>
         //START Admob
         var admobid = {};
         if (/(android)/i.test(navigator.userAgent)) {
@@ -260,7 +264,6 @@
             //iabRef.addEventListener('loadstart', iabLoadStart);
             //iabRef.addEventListener('loadstop', iabLoadStop);
             //iabRef.addEventListener('exit', iabClose);
-            
             $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
                 e.preventDefault();
                 var $this = $(this);
@@ -276,7 +279,8 @@
                 initAd();
                 prepareInterstitial();
             }
-        } //END-ondeviceready
+        }
+
         function prepareInterstitial() {
             var autoshow = document.getElementById('autoshow').checked;
             AdMob.prepareInterstitial({
@@ -298,8 +302,8 @@
                 position: AdMob.AD_POSITION.BOTTOM_CENTER
                 , // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
                 bgColor: 'black', // color name, or '#RRGGBB'
-                // x: integer,      // valid when set position to 0 / POS_XY
-                // y: integer,      // valid when set position to 0 / POS_XY
+                // x: integer,		// valid when set position to 0 / POS_XY
+                // y: integer,		// valid when set position to 0 / POS_XY
                 isTesting: false, // set to true, to receiving test ad for testing purpose
                 // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
             };
@@ -321,7 +325,10 @@
             document.addEventListener('onAdLeaveApp', function (data) {});
             document.addEventListener('onAdDismiss', function (data) {});
         }
-        //On Load
+    </script>
+    <!-- END Other stuff -->
+    <!-- Modal -->
+    <script type="text/javascript">
         $(window).load(function () {
             setInterval(function () {
                 AdMob.showInterstitial();
