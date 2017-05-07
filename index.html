@@ -248,65 +248,55 @@
     
     <!-- ADmob -->
     <script>
-        
-        admob.createBannerView({
-            autoShowBanner: true;
-        });
-        
-        //Interstitial Function
-        var isPendingInterstitial = false;
-        var isAutoshowInterstitial = false;
-        
-        function prepareInterstitialAd() {
-            if (!isPendingInterstitial) { // We won't ask for another interstitial ad if we already have an available one
-                admob.requestInterstitialAd({
-                    autoShowInterstitial: isAutoshowInterstitial
+        function initAd(){
+            if ( window.plugins && window.plugins.AdMob ) {
+                var ad_units = {
+                    android : {
+                        banner: 'ca-app-pub-3545086673654393/5969342403',		//PUT ADMOB ADCODE HERE 
+                        interstitial: 'ca-app-pub-3545086673654393/7166874008'	//PUT ADMOB ADCODE HERE 
+                    }
+                };
+                var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
+                
+                window.plugins.AdMob.setOptions( {
+                    publisherId: admobid.banner,
+                    interstitialAdId: admobid.interstitial,
+                    adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
+                    bannerAtTop: false, // set to true, to put banner at top 
+                    overlap: true, // banner will overlap webview  
+                    offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
+                    isTesting: true, // receiving test ad 
+                    autoShow: true // auto show interstitial ad when loaded 
                 });
+                
+                registerAdEvents();
+                window.plugins.AdMob.createInterstitialView();	//get the interstitials ready to be shown 
+                window.plugins.AdMob.requestInterstitialAd();
+                
+            } else {
+                //alert( 'admob plugin not ready' ); 
             }
         }
-        
-        function onAdLoadedEvent(e) {
-            if (e.adType === admob.AD_TYPE.INTERSTITIAL && !isAutoshowInterstitial) {
-                isPendingInterstitial = true;
-            }
-        }
-        //END Interstitial Function
         
         function onDeviceReady() {
             document.removeEventListener('deviceready', onDeviceReady, false);
-            
-            admob.setOptions({
-                publisherId:          "ca-app-pub-3545086673654393/5969342403",
-                interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
-                isTesting:            true
-            });
-            
-            document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
-            prepareIntestitialAd();
+            initAd();
         }
-        
         document.addEventListener("deviceready", onDeviceReady, false);
         
-        function showInterstitialAd() {
-            if (isPendingInterstitial) {
-                admob.showInterstitialAd(function () {
-                    isPendingInterstitial = false;
-                    isAutoshowInterstitial = false;
-                    prepareInterstitialAd();
-                });
-            } else {
-                // The interstitial is not prepared, so in this case, we want to show the interstitial as soon as possible
-                isAutoshowInterstitial = true;
-                admob.requestInterstitialAd({
-                    autoShowInterstitial: isAutoshowInterstitial
-                });
-            }
+        //display the banner
+        function showBannerFunc(){
+            window.plugins.AdMob.createBannerView();
+        }
+        //display the interstitial 
+        function showInterstitialFunc(){
+            window.plugins.AdMob.showInterstitialAd();
         }
         
         //On Load
         $(window).load(function () {
             Intro();
-            showInterstitialAd();
+            showBannerFunc();
         });
     </script>
     
