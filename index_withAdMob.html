@@ -33,7 +33,6 @@
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="jquery.easyModal.js"></script>
-    <script src="admob_simple.js"></script>
 
     <!-- Favicons
 ================================================== -->
@@ -43,7 +42,7 @@
 <body style="background: #35b88f top center no-repeat;
 background-size: cover;
 background-position: center 0;
-background-attachment: fixed;">
+background-attachment: fixed;" onresize="onResize()">
 
 
 
@@ -52,7 +51,7 @@ background-attachment: fixed;">
 
     <!-- Delete everything in this .container and get started on your own site! -->
     <div id="topHeader" style="
-background: #183026 url('images/bg.jpg') no-repeat;
+background: #183026 url('http://luckyphonenumber.tk/images/bg2.jpg') no-repeat;
 background-size: cover;
 background-position: center 0;
 background-attachment: fixed; padding:0.01em 0 1em 0;">
@@ -120,7 +119,7 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
                     </div>
                 </div>
                 <!-- END results -->
-                <a id="enterNew" href="http://luckyphonenumber.tk" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); iklan();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
+                <a id="enterNew" href="#" class="idr" TYPE="BUTTON" ONCLICK="resetStuff(); AdMob.showInterstitial();" style="width:100%; text-align:center; background:#ff6666; color:#fff; text-decoration:none; font-weight:700; border:#d85555 solid 1px; display:none;">Enter new number</a>
 
             </div>
 
@@ -141,7 +140,12 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
         </div>
 
         <hr>
-
+        
+        <div style="display:none"><!-- essential for showing adMob Interstitial ads -->
+            <input type='checkbox' id='autoshow' checked />auto show when ready<br />
+            <div id='sizeinfo'></div>
+        </div>
+        
         <!-- Privacy Policy -->
         <div id="privacyPolicy" class="sixteen columns" style="text-align:center; display:none;">
             <p><a href="http://luckyphonenumber.tk/privacy_policy.html">Privacy Policy</a>
@@ -203,6 +207,22 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
     <!-- Other stuff -->
     <script>
+        //START Admob
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) { 
+            admobid = { // for Android
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }  else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-3545086673654393/5969342403',
+                interstitial: 'ca-app-pub-3545086673654393/7166874008'
+            };
+        }
+        //END Admob
+        
+        
         // Wait for Cordova to load
          //
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -223,34 +243,69 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 
                 window.open($this.attr('href'), target, 'location=no');
             });
+            
+            
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId : admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow : true
+                });
+                
+                initAd();
+                prepareInterstitial();                
+            }
+                                    
         }
-
-
-         //START onLoad
-         //END onLoad
+        
+        function prepareInterstitial() {
+            var autoshow = document.getElementById('autoshow').checked;
+            AdMob.prepareInterstitial({adId:admobid.interstitial, autoShow:true});
+        }
+        
+        function onResize(){
+            var s = document.getElementById('sizeinfo');
+            s.innerHTML = "web view: " + window.innerWidth + " x " + window.innerHeight;
+        }
+        
+        function initAd(){
+            var defaultOptions = {
+                // adSize: 'SMART_BANNER',
+                // width: integer, // valid when set adSize 'CUSTOM'
+                // height: integer, // valid when set adSize 'CUSTOM'
+                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+                bgColor: 'black', // color name, or '#RRGGBB'
+                // x: integer,		// valid when set position to 0 / POS_XY
+                // y: integer,		// valid when set position to 0 / POS_XY
+                isTesting: false, // set to true, to receiving test ad for testing purpose
+                // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+            };
+            AdMob.setOptions( defaultOptions );
+            registerAdEvents();
+        }
+        
+        function registerAdEvents() {
+            // new events, with variable to differentiate: adNetwork, adType, adEvent
+            document.addEventListener('onAdFailLoad', function(data){
+                //alert('error: ' + data.error + 
+                //      ', reason: ' + data.reason + 
+                //      ', adNetwork:' + data.adNetwork + 
+                //      ', adType:' + data.adType + 
+                //      ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
+            document.addEventListener('onAdLoaded', function(data){});
+            document.addEventListener('onAdPresent', function(data){});
+            document.addEventListener('onAdLeaveApp', function(data){});
+            document.addEventListener('onAdDismiss', function(data){});
+        }
+        
     </script>
     <!-- END Other stuff -->
 
 
 <!-- Modal -->
-<div id="modal2">
-	<div class="" id="my-ad-slot">
-		<h6 style="text-transform:none; font-weight:400; colot:#efefef;">Sponsored advert:</h6>
-		<script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=523169984"></script>
-    </div>
-	<br>
-	<div style="text-align:center;">
-		<a href="#" class="close" style="color:#efefef; text-decoration:none; font-weight:700; border:#efefef solid 1px; padding:0.5em;">Close advert</a>
-	</div>
-</div>
-	
 	<script type="text/javascript">
-		$('#modal2').easyModal({
-			overlay : 0.4,
-			overlayOpacity : 0.8,
-			overlayClose: false
-		});
-		
 		function iklan() {
 			setTimeout(function() {
 				$('#modal2').trigger('openModal');
@@ -258,10 +313,10 @@ background-attachment: fixed; padding:0.01em 0 1em 0;">
 		}
 		
 		$(window).load(function() {
-		  
-			setInterval(function() {
-				$('#modal2').trigger('openModal');				
-			}, 38000);
+            
+            setInterval(function() {
+                AdMob.showInterstitial();
+            }, 38000);
 			
 		});
 		
