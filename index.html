@@ -253,8 +253,8 @@
             if ( window.plugins && window.plugins.AdMob ) {
                 var ad_units = {
                     android : {
-                        banner: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx',		//PUT ADMOB ADCODE HERE 
-                        interstitial: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx'	//PUT ADMOB ADCODE HERE 
+                        banner: 'ca-app-pub-3545086673654393/5969342403',		//PUT ADMOB ADCODE HERE 
+                        interstitial: 'ca-app-pub-3545086673654393/7166874008'	//PUT ADMOB ADCODE HERE 
                     }
                 };
                 var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
@@ -266,7 +266,7 @@
                 bannerAtTop: false, // set to true, to put banner at top 
                 overlap: true, // banner will overlap webview 
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
-                isTesting: false, // receiving test ad 
+                isTesting: true, // receiving test ad 
                 autoShow: true // auto show interstitial ad when loaded 
             });
                 registerAdEvents();
