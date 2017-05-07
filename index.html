@@ -151,10 +151,16 @@
     <script>
         //Modal
         function Intro() {
-         $('[data-remodal-id=modal]').remodal().open();
-            CheckVersion();
-         "use strict"   
+            //randomizer
+            if (return (Math.floor(Math.random() * 2) == 0)) {
+                $('[data-remodal-id=modal]').remodal().open();
+                "use strict"   
+            } else {
+                CheckVersion();
+            }
+            
         }
+        
         function AboutUs() {
          $('[data-remodal-id=modal2]').remodal().open();
          "use strict"   
