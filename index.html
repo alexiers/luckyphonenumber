@@ -152,6 +152,7 @@
         //Modal
         function Intro() {
          $('[data-remodal-id=modal]').remodal().open();
+            CheckVersion();
          "use strict"   
         }
         function AboutUs() {
@@ -264,7 +265,7 @@
                 interstitialAdId: admobid.interstitial,
                 adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
                 bannerAtTop: false, // set to true, to put banner at top 
-                overlap: true, // banner will overlap webview 
+                overlap: false, // banner will not overlap webview 
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
                 isTesting: true, // receiving test ad 
                 autoShow: true // auto show interstitial ad when loaded 
@@ -315,6 +316,7 @@
             initAd();
             showBannerFunc();
             showInterstitialFunc();
+            Intro();
         } //END-ondeviceready
         
         /*On Load
@@ -325,9 +327,7 @@
     
     
     
-    <!-------------------------------------------------
-    Check App Version and Prompt to Update IF OLDER
-    ----------------------------------------------------
+    
     <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
     <script>
         //Version Record (Update this with every new version)
