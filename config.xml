@@ -35,23 +35,27 @@
 
     <!-- Core plugins -->
     <plugin name="cordova-plugin-inappbrowser" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
-
+    
     <!-- Third party plugins -->
     <gap:plugin name="cordova-plugin-admob-simple" source="npm"/>
+    
+    <!-- Splash Screem -->
+    <plugin name="cordova-plugin-splashscreen" source="npm" />
+    <preference name="SplashScreenDelay" value="3000" />  
+    <preference name="AutoHideSplashScreen" value="true" />  
+    <preference name="SplashScreen" value="www/res/screen/android" />  
+    <preference name="SplashMaintainAspectRatio" value="true" /> 
+    <platform name="android"> 
+        <splash density="ldpi" src="www/res/screen/android/ldpi.png" />  
+        <splash density="mdpi" src="www/res/screen/android/mdpi.png" />  
+        <splash density="hdpi" src="www/res/screen/android/hdpi.png" />  
+        <splash density="xhdpi" src="www/res/screen/android/xhdpi.png" />  
+        <splash density="xxhdpi" src="www/res/screen/android/xxhdpi.png" />  
+        <splash density="xxxhdpi" src="www/res/screen/android/xxxhdpi.png" />  
+    </platform> 
 
     <!-- Define app icon for each platform. -->
-    <icon src="img/icon-512.png" />
-    
-    <!-- Define app splash screen for each platform. -->
-    <platform name="android">
-        <!-- you can use any density that exists in the Android project -->        
-        <splash src="splash/splash-hdpi.png" density="port-hdpi"/>
-        <splash src="splash/splash-ldpi.png" density="port-ldpi"/>
-        <splash src="splash/splash-mdpi.png" density="port-mdpi"/>
-        <splash src="splash/splash-xhdpi.png" density="port-xhdpi"/>
-    </platform>
-    <preference name="SplashScreenDelay" value="2000" />
+    <icon src="icon.png" />
 
     <!--
         Define access to external domains.
