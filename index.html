@@ -86,7 +86,7 @@
                 <div id="pleaseenternumber" class="props">
                     <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff();">Enter New Number</a> </div>
+                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff(); showInterstitialFunc();">Enter New Number</a> </div>
             <footer> </footer>
         </section>
         <!-- Footer -->
@@ -248,41 +248,43 @@
     
     <!-- ADmob -->
     <script>
+        //initialize the goodies 
         function initAd(){
             if ( window.plugins && window.plugins.AdMob ) {
                 var ad_units = {
                     android : {
-                        banner: 'ca-app-pub-3545086673654393/5969342403',		//PUT ADMOB ADCODE HERE 
-                        interstitial: 'ca-app-pub-3545086673654393/7166874008'	//PUT ADMOB ADCODE HERE 
+                        banner: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx',		//PUT ADMOB ADCODE HERE 
+                        interstitial: 'ca-app-pub-xxxxxxxxxxx/xxxxxxxxxxx'	//PUT ADMOB ADCODE HERE 
                     }
                 };
                 var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
                 
-                window.plugins.AdMob.setOptions( {
-                    publisherId: admobid.banner,
-                    interstitialAdId: admobid.interstitial,
-                    adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
-                    bannerAtTop: false, // set to true, to put banner at top 
-                    overlap: true, // banner will overlap webview  
-                    offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
-                    isTesting: true, // receiving test ad 
-                    autoShow: true // auto show interstitial ad when loaded 
-                });
-                
+            window.plugins.AdMob.setOptions( {
+                publisherId: admobid.banner,
+                interstitialAdId: admobid.interstitial,
+                adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
+                bannerAtTop: false, // set to true, to put banner at top 
+                overlap: true, // banner will overlap webview 
+                offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
+                isTesting: false, // receiving test ad 
+                autoShow: true // auto show interstitial ad when loaded 
+            });
                 registerAdEvents();
-                window.plugins.AdMob.createInterstitialView();	//get the interstitials ready to be shown 
-                window.plugins.AdMob.requestInterstitialAd();
-                
             } else {
                 //alert( 'admob plugin not ready' ); 
             }
         }
-        
-        function onDeviceReady() {
-            document.removeEventListener('deviceready', onDeviceReady, false);
-            initAd();
+        //functions to allow you to know when ads are shown, etc.
+        function registerAdEvents() {
+            document.addEventListener('onReceiveAd', function(){});
+            document.addEventListener('onFailedToReceiveAd', function(data){});
+            document.addEventListener('onPresentAd', function(){});
+            document.addEventListener('onDismissAd', function(){ });
+            document.addEventListener('onLeaveToAd', function(){ });
+            document.addEventListener('onReceiveInterstitialAd', function(){ });
+            document.addEventListener('onPresentInterstitialAd', function(){ });
+            document.addEventListener('onDismissInterstitialAd', function(){ });
         }
-        document.addEventListener("deviceready", onDeviceReady, false);
         
         //display the banner
         function showBannerFunc(){
@@ -290,14 +292,13 @@
         }
         //display the interstitial 
         function showInterstitialFunc(){
-            window.plugins.AdMob.showInterstitialAd();
-        }
+            window.plugins.AdMob.createInterstitialView();	//get the interstitials ready to be shown and show when it's loaded. 
+            window.plugins.AdMob.requestInterstitialAd();
+        }        
+        
         
         //On Load
         $(window).load(function () {
-            Intro();
-            showBannerFunc();
-            showInterstitialFunc();
         });
     </script>
     
