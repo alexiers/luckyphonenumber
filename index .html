@@ -15,15 +15,15 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- CSS -->
-    <link rel="stylesheet" href="stuff/main.css">
+    <link rel="stylesheet" href="main.css">
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!-- Javascript -->
     <script src="jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     
     <!-- Remodal Modal Window -->
-    <link rel="stylesheet" href="remodal/remodal.css">
-    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="scripts/remodal/remodal.css">
+    <link rel="stylesheet" href="scripts/remodal/remodal-default-theme.css">
     
 </head>
 
@@ -86,7 +86,7 @@
                 <div id="pleaseenternumber" class="props">
                     <p><b>Please enter a phone number!</b> </p>
                 </div>
-                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff(); showInterstitialAd();">Enter New Number</a> </div>
+                <br/> <a id="enterNew" class="button" type="button" onclick="resetStuff();">Enter New Number</a> </div>
             <footer> </footer>
         </section>
         <!-- Footer -->
@@ -136,12 +136,12 @@
     <!-- END Modal Window -->
     
     
-    <!-- essential for showing adMob Interstitial ads -->
+    <!-- essential for showing adMob Interstitial ads
     <div style="display:none">
         <input type='checkbox' id='autoshow' checked />auto show when ready
         <br />
         <div id='sizeinfo'></div>
-    </div>
+    </div>  -->
     <!-- END Ads -->
     
     
@@ -168,6 +168,7 @@
         function greenBG() {
             "use strict"
         }
+        
         //critical for website to show
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
         
@@ -186,7 +187,6 @@
                     , "entry_1330399588": finalTally
                     , "entry_276219161": myCountry
                     , "entry_1202517494": myCity
-                    , "entry_1907319424": "Web"
                 }
                 , type: "POST"
                 , dataType: "xml"
@@ -246,10 +246,21 @@
         });
         
         
+        //On Load
+        $(window).load(function () {
+            Intro();
+        });
+    </script>
+    
+    
+    <!-- ADmob -->
+    <script>
         
-        ///////// AdMob /////////
+        admob.createBannerView({
+            autoShowBanner: true
+        });
         
-        //Prepare Interstitial
+        //Interstitial Function
         var isPendingInterstitial = false;
         var isAutoshowInterstitial = false;
         
@@ -266,26 +277,23 @@
                 isPendingInterstitial = true;
             }
         }
+        //END Interstitial Function
         
         function onDeviceReady() {
-            
             document.removeEventListener('deviceready', onDeviceReady, false);
+            
             admob.setOptions({
                 publisherId:          "ca-app-pub-3545086673654393/5969342403",
                 interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
-                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",
-                tappxShare:           0.1,
-                isTesting: true
-            });  
+                isTesting:            true
+            });
+            
             document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
             prepareIntestitialAd();
-            
-        }//END onDeviceReady
+        }
         
         document.addEventListener("deviceready", onDeviceReady, false);
         
-        
-        //Show Interstitial
         function showInterstitialAd() {
             if (isPendingInterstitial) {
                 admob.showInterstitialAd(function () {
@@ -301,16 +309,9 @@
                 });
             }
         }
-        
-        //On Load
-        $(window).load(function () {
-            Intro();
-            admob.createBannerView();
-            setInterval(function () {
-                showInterstitialAd();
-            }, 38000);
-        });
     </script>
+    
+    
     
     <!-------------------------------------------------
     Check App Version and Prompt to Update IF OLDER
@@ -343,7 +344,7 @@
     <!-- End of StatCounter Code for Dreamweaver -->
     
     <!-- Remodal Modal Window -->
-    <script src="remodal/remodal.min.js"></script>
+    <script src="scripts/remodal/remodal.min.js"></script>
 </body>
 
 </html>

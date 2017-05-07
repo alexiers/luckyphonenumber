@@ -38,8 +38,7 @@
 
     <!-- Third party plugins -->
     <!-- <plugin name="cordova-plugin-admobpro" source="npm"/> -->
-    <gap:plugin name="cordova-plugin-admob" source="npm" />
-    <dependency id="cordova-plugin-googleplayservices"/>
+    <plugin name="phonegap-admob" source="npm"/>
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
         <plugin name="com.phonegap.plugins.barcodescanner" />
@@ -48,7 +47,6 @@
     <!-- Define app icon for each platform. -->
     <icon src="img/icon-512.png" />
     <!-- Define app splash screen for each platform. -->
-    <splash src="splash-xhdpi.png" />
     <!--
     <splash src="splash-ldpi.png" platform="android" qualifier="ldpi" />
     <splash src="splash-mdpi.png" platform="android" qualifier="mdpi" />
