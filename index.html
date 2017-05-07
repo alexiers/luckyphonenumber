@@ -134,7 +134,16 @@
         <!-- <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=676046376"></script> -->
     </div>
     <!-- END Modal Window -->
-        
+    
+    
+    <!-- essential for showing adMob Interstitial ads
+    <div style="display:none">
+        <input type='checkbox' id='autoshow' checked />auto show when ready
+        <br />
+        <div id='sizeinfo'></div>
+    </div>  -->
+    <!-- END Ads -->
+    
     
     <!-- End Document ================================================== -->
     
@@ -246,8 +255,6 @@
                     android : {
                         banner: 'ca-app-pub-3545086673654393/5969342403',		//PUT ADMOB ADCODE HERE 
                         interstitial: 'ca-app-pub-3545086673654393/7166874008'	//PUT ADMOB ADCODE HERE 
-                        tappxIdAndroid:       "",        // Optional
-                        tappxShare:           0.9                                        // Optional
                     }
                 };
                 var admobid = ( /(android)/i.test(navigator.userAgent) ) ? ad_units.android : ad_units.ios;
@@ -257,7 +264,7 @@
                 interstitialAdId: admobid.interstitial,
                 adSize: window.plugins.AdMob.AD_SIZE.SMART_BANNER,	//use SMART_BANNER, BANNER, LARGE_BANNER, IAB_MRECT, IAB_BANNER, IAB_LEADERBOARD 
                 bannerAtTop: false, // set to true, to put banner at top 
-                overlap: false;, // banner will overlap webview 
+                overlap: true, // banner will overlap webview 
                 offsetTopBar: false, // set to true to avoid ios7 status bar overlap 
                 isTesting: true, // receiving test ad 
                 autoShow: true // auto show interstitial ad when loaded 
@@ -317,7 +324,10 @@
         
     
     
-    <!-- Check App Version and Prompt to Update IF OLDER 
+    
+    <!-------------------------------------------------
+    Check App Version and Prompt to Update IF OLDER
+    ----------------------------------------------------
     <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
     <script>
         //Version Record (Update this with every new version)
@@ -325,9 +335,9 @@
         
         //Open Modal Window that asks users to download new version
         function DownloadNewVersion() {
-            $('[data-remodal-id=modal3]').remodal().open();
+         $('[data-remodal-id=modal3]').remodal().open();
         }
-    </script>
+    </script>->
     
     
     <!-- Start of StatCounter Code for Dreamweaver -->
