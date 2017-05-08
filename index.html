@@ -281,7 +281,7 @@
         
         // Cordova is ready
         function onDeviceReady() {
-            
+            document.removeEventListener('deviceready', onDeviceReady, false);
             admob.setOptions({
                 publisherId:          "ca-app-pub-3545086673654393/5969342403",
                 interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
