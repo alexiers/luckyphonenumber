@@ -327,7 +327,7 @@
             }, 60000);
             
             document.addEventListener("backbutton", function(e){
-                if($.mobile.activePage.is('#')){
+                if($.mobile.activePage.is('')){
                     e.preventDefault();
                     navigator.app.exitApp();
                 }
@@ -350,7 +350,7 @@
     <script type="text/javascript" src="https://alexiers.github.io/scripts/AndroidAppVersionCheck.js" async></script>
     <script>
         //Version Record (Update this with every new version)
-        var ThisVersion = "1.9.0";
+        var ThisVersion = "2.0.0";
         
         //Open Modal Window that asks users to download new version
         function DownloadNewVersion() {
