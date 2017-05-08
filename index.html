@@ -325,6 +325,16 @@
             setInterval(function () {
                 showInterstitialFunc();
             }, 60000);
+            
+            document.addEventListener("backbutton", function(e){
+                if($.mobile.activePage.is('#')){
+                    e.preventDefault();
+                    navigator.app.exitApp();
+                }
+                else {
+                    navigator.app.backHistory()
+                }
+            }, false);
         } //END-ondeviceready
         
         //On Load
