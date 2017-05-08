@@ -281,14 +281,18 @@
         
         // Cordova is ready
         function onDeviceReady() {
-            document.removeEventListener('deviceready', onDeviceReady, false);
             
             admob.setOptions({
                 publisherId:          "ca-app-pub-3545086673654393/5969342403",
                 interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
                 tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",
                 tappxShare:           0.9,
+                bannerAtTop:          false,
+                overlap:              false,
+                offsetStatusBar:      false,
                 isTesting: true,
+                autoShowBanner:       true,
+                autoShowInterstitial: true
             });
             
             document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
@@ -301,6 +305,10 @@
                 var target = $this.data('inAppBrowser') || '_system';
                 window.open($this.attr('href'), target, 'location=no');
             });
+            
+            setInterval(function () {
+                showInterstitialAd();
+            }, 60000);
         } //END-ondeviceready
         
         // Wait for Cordova to load
@@ -325,11 +333,6 @@
         //Onload
         $(window).load(function () {
             Intro();
-            admob.createBannerView();
-            showInterstitialAd();
-            setInterval(function () {
-                showInterstitialAd();
-            }, 60000);
         });
     </script>
     
