@@ -37,7 +37,7 @@
     <plugin name="cordova-plugin-inappbrowser" />
     
     <!-- Third party plugins -->
-    <gap:plugin name="phonegap-admob" source="npm"/>
+    <gap:plugin name="cordova-plugin-admob-simple" source="npm"/>
     
     <!-- Splash Screem -->
     <plugin name="cordova-plugin-splashscreen" source="npm" />
