@@ -258,20 +258,6 @@
     <!-- ADmob -->
     <script>
         //initialize the goodies 
-        function initAd(){
-            
-            // Set AdMobAds options:
-            admob.setOptions({
-                publisherId:          "ca-app-pub-3545086673654393/5969342403",  // Required
-                interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",  // Optional
-                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",        // Optional
-                tappxShare:           0.9                                        // Optional
-            });
-            
-            document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
-            prepareIntestitialAd();
-        }
-        
         var isPendingInterstitial = false;
         var isAutoshowInterstitial = false;
         
@@ -288,6 +274,37 @@
                 isPendingInterstitial = true;
             }
         }
+    </script>
+        
+    <script>
+        //OnDeviceReady
+        
+        // Cordova is ready
+        function onDeviceReady() {
+            document.removeEventListener('deviceready', onDeviceReady, false);
+            
+            admob.setOptions({
+                publisherId:          "ca-app-pub-3545086673654393/5969342403",
+                interstitialAdId:     "ca-app-pub-3545086673654393/7166874008",
+                tappxIdAndroid:       "/120940746/Pub-17750-Android-3340",
+                tappxShare:           0.9,
+                isTesting: true,
+            });
+            
+            document.addEventListener(admob.events.onAdLoaded, onAdLoadedEvent);
+            prepareIntestitialAd();
+            
+            //InAppBrowser
+            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var target = $this.data('inAppBrowser') || '_system';
+                window.open($this.attr('href'), target, 'location=no');
+            });
+        } //END-ondeviceready
+        
+        // Wait for Cordova to load
+        document.addEventListener("deviceready", onDeviceReady, false);        
         
         function showInterstitialAd() {
             if (isPendingInterstitial) {
@@ -304,38 +321,15 @@
                 });
             }
         }
-    </script>
-    
-    
-    
-    <script>
-        //OnDeviceReady
-        // Wait for Cordova to load
-        document.addEventListener("deviceready", onDeviceReady, false);
-        // Cordova is ready
-        function onDeviceReady() {
-            document.removeEventListener('deviceready', onDeviceReady, false);
-            
-            //InAppBrowser
-            $(document).on('click', 'a[href^=http], a[href^=https]', function (e) {
-                e.preventDefault();
-                var $this = $(this);
-                var target = $this.data('inAppBrowser') || '_system';
-                window.open($this.attr('href'), target, 'location=no');
-            });
-            
-            //Initialize AdMob
-            initAd();
+        
+        //Onload
+        $(window).load(function () {
+            Intro();
             admob.createBannerView();
             showInterstitialAd();
             setInterval(function () {
                 showInterstitialAd();
             }, 60000);
-        } //END-ondeviceready
-        
-        
-        $(window).load(function () {
-            Intro();
         });
     </script>
     
