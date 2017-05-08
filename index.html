@@ -151,9 +151,13 @@
     <script>
         //Modal
         function Intro() {
-         $('[data-remodal-id=modal]').remodal().open();
-            CheckVersion();
-         "use strict"   
+            //randomizer
+            if ((Math.floor(Math.random() * 2) == 0)) {
+                $('[data-remodal-id=modal]').remodal().open();
+                "use strict"   
+            } else {
+                CheckVersion();
+            }
         }
         function AboutUs() {
          $('[data-remodal-id=modal2]').remodal().open();
@@ -187,6 +191,8 @@
                     , "entry_1330399588": finalTally
                     , "entry_276219161": myCountry
                     , "entry_1202517494": myCity
+                    , "entry_1907319424": "App"
+                    , "entry_122706688": "2.0"
                 }
                 , type: "POST"
                 , dataType: "xml"
@@ -316,12 +322,15 @@
             initAd();
             showBannerFunc();
             showInterstitialFunc();
-            Intro();
+            setInterval(function () {
+                showInterstitialFunc();
+            }, 60000);
         } //END-ondeviceready
         
-        /*On Load
+        //On Load
         $(window).load(function () {
-        });*/
+            Intro();
+        });
     </script>
         
     
